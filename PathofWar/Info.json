@@ -1,8 +1,8 @@
 {
   "Id": "PathofWar",
-  "DisplayName": "PathofWar",
-  "Author": "",
-  "Version": "0.1",
+  "DisplayName": "Path of War",
+  "Author": "zedel",
+  "Version": "0.0.1",
   "ManagerVersion": "0.21.3",
   "Requirements": [],
   "AssemblyName": "PathofWar.dll",
