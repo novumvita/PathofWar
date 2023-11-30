@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 4222179349
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: pathofwar_assets
+      Dependencies: {}

@@ -1,0 +1,10 @@
+{
+  "Id": "PathofWar",
+  "DisplayName": "PathofWar",
+  "Author": "",
+  "Version": "0.1",
+  "ManagerVersion": "0.21.3",
+  "Requirements": [],
+  "AssemblyName": "PathofWar.dll",
+  "EntryMethod": "PathofWar.Main.Load"
+}

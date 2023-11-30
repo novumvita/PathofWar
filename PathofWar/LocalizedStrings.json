@@ -1,0 +1,243 @@
+[
+  {
+    "Key": "PathofWar.Selection.Name",
+    "ProcessTemplates": false,
+    "enGB": "The Art of the Blade"
+  },
+  {
+    "Key": "PathofWar.Selection.Description",
+    "enGB": "Choose a Martial Discipline. The maneuvers in a discipline are usually linked by common effects, philosophies, or functions. Each discipline is tied to a certain skill that might be used in the execution of some of its maneuvers."
+  },
+  {
+    "Key": "PathofWar.Progression.Name",
+    "ProcessTemplates": false,
+    "enGB": "Maneuvers and Stances"
+  },
+  {
+    "Key": "PathofWar.Progression.Description",
+    "enGB": "You may learn new maneuvers and stances as you level up."
+  },
+  {
+    "Key": "PathofWar.Maneuver.Name",
+    "ProcessTemplates": false,
+    "enGB": "Martial Maneuvers"
+  },
+  {
+    "Key": "PathofWar.Maneuver.Description",
+    "enGB": "You may learn a maneuver that you meet the prerequisites for."
+  },
+  {
+    "Key": "PathofWar.Stance.Name",
+    "ProcessTemplates": false,
+    "enGB": "Martial Stances"
+  },
+  {
+    "Key": "PathofWar.Stance.Description",
+    "enGB": "You may learn a stance that you meet the prerequisites for."
+  },
+  {
+    "Key": "RadiantDawn.Name",
+    "ProcessTemplates": false,
+    "enGB": "Radiant Dawn"
+  },
+  {
+    "Key": "RadiantDawn.Description",
+    "enGB": "Brought forth by the desire to rule, and shaped on the battlefield through ages of conflict, Radiant Dawn is a discipline that is steeped in blood and akasha. In ages where conflict and war are common, those with this discipline watch over the battlefield like the sun in the sky, directing allies to seize victory, while hindering enemies powerful abilities to shift the tide of battle into their favor. In ages where conflict has been distant, Radiant Dawn has existed as an akashic meditative exercise amongst rulers and nobility. Regardless of what form it takes, practitioners of the Radiant Dawn strive to be like the sun itself: Above all.\nInitiation Modifier: Charisma"
+  },
+  {
+    "Key": "RadiantDawn.Bolster.Name",
+    "ProcessTemplates": false,
+    "enGB": "Bolster"
+  },
+  {
+    "Key": "RadiantDawn.Bolster.Description",
+    "enGB": "You fortify an ally with akasha, hardening their skin like the scales of a dragon. The next time they are hit by an enemy attack,they gain DR/– equal to your initiation modifier for 1 round."
+  },
+  {
+    "Key": "RadiantDawn.Bolster.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Bolstered"
+  },
+
+  {
+    "Key": "RadiantDawn.Bolster.Buff.Description",
+    "enGB": "Has DR/- against one attack."
+  },
+  {
+    "Key": "RadiantDawn.DecreeOfMercy.Name",
+    "ProcessTemplates": false,
+    "enGB": "Decree of Mercy"
+  },
+
+  {
+    "Key": "RadiantDawn.DecreeOfMercy.Description",
+    "enGB": "A simple look and gesture can weaken one’s resolve to kill. The next time the target uses an effect which deals hit point damage, they can not kill the affected unit."
+  },
+  {
+    "Key": "RadiantDawn.DecreeOfMercy.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Merciful"
+  },
+
+  {
+    "Key": "RadiantDawn.DecreeOfMercy.Buff.Description",
+    "enGB": "Does not have the resolve to kill."
+  },
+  {
+    "Key": "RadiantDawn.Dismiss.Name",
+    "ProcessTemplates": false,
+    "enGB": "Dismiss"
+  },
+
+  {
+    "Key": "RadiantDawn.Dismiss.Description",
+    "enGB": "This attack ‘softly’ removes an enemy from your presence. Make an attack. If it hits, you deal damage as normal, and you can make a trip attempt against the target. If your trip attempt succeeds, the target is also pushed away. When determining your combat maneuver bonus for this strike, you use your character level in place of your base attack bonus, and your initiation modifier in place of your Strength modifier."
+  },
+  {
+    "Key": "RadiantDawn.LifeburstStrike.Name",
+    "ProcessTemplates": false,
+    "enGB": "Lifeburst Strike"
+  },
+
+  {
+    "Key": "RadiantDawn.LifeburstStrike.Description",
+    "enGB": "To help your allies and harm your enemies is the most basic tenet of the Radiant Dawn discipline. Make an attack. If it hits, it deals weapon damage as normal, and you can heal yourself and allies within close range for a total number of hit points proportional to your initiation modifier, divided among you and your allies, prioritizing the most injured."
+  },
+  {
+    "Key": "RadiantDawn.DecreeOfDeath.Name",
+    "ProcessTemplates": false,
+    "enGB": "Decree of Death"
+  },
+
+  {
+    "Key": "RadiantDawn.DecreeOfDeath.Description",
+    "enGB": "You single out a target for execution. Make an attack. If it hits, it deals weapon damage as normal, and the next instance of damage against the target within 1 round deals 50% additional damage."
+  },
+  {
+    "Key": "RadiantDawn.DecreeOfDeath.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Decreed to Death"
+  },
+
+  {
+    "Key": "RadiantDawn.DecreeOfDeath.Buff.Description",
+    "enGB": "Takes 50% additional damage from the next instance of damage."
+  },
+  {
+    "Key": "RadiantDawn.ShatterSpell.Name",
+    "ProcessTemplates": false,
+    "enGB": "Shatter Spell"
+  },
+
+  {
+    "Key": "RadiantDawn.ShatterSpell.Description",
+    "enGB": "A maneuver whose origins did not come from the disciples of the Radiant Dawn, but was quickly adopted and adapted to deal with spellcasters on the battlefield. Make an attack. If the attack hits, it deals weapon damage as normal plus an additional 2d6 points of damage. The target is affected by a targeted dispel magic as if you had cast it, using your initiator level as your caster level."
+  },
+  {
+    "Key": "RadiantDawn.DecreeOfPurity.Name",
+    "ProcessTemplates": false,
+    "enGB": "Decree of Purity"
+  },
+
+  {
+    "Key": "RadiantDawn.DecreeOfPurity.Description",
+    "enGB": "A single word and a wave of the hand purifies those who would stand with you. Heal yourself and allies within close range for a total number of hit points proportional to your initiation modifier, divided among you and your allies, prioritizing the most injured."
+  },
+  {
+    "Key": "RadiantDawn.PushTheAdvantage.Name",
+    "ProcessTemplates": false,
+    "enGB": "Push the Advantage"
+  },
+
+  {
+    "Key": "RadiantDawn.PushTheAdvantage.Description",
+    "enGB": "With the enemy defeated, you spur an ally towards further glory. When you or an ally kills or destroys an enemy, That ally may immediately take a standard action, and you may also heal yourself and allies within close range for a total number of hit points proportional to your initiation modifier, divided among you and your allies, prioritizing the most injured."
+  },
+  {
+    "Key": "RadiantDawn.PushTheAdvantage.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Push the Advantage"
+  },
+
+  {
+    "Key": "RadiantDawn.PushTheAdvantage.Buff.Description",
+    "enGB": "Spurring allies towards glory."
+  },
+  {
+    "Key": "RadiantDawn.NoblesseOblige.Name",
+    "ProcessTemplates": false,
+    "enGB": "Noblesse Oblige"
+  },
+  {
+    "Key": "RadiantDawn.NoblesseOblige.Description",
+    "enGB": "When all else fails, your allies turn to you to save them. Whenever an ally within close range would die or be destroyed, you initiate this maneuver, even if it is not your turn. That ally’s hit points becomes 1. Then, you deal (4d6 + your initiation modifier) points of damage to the unit whose attack triggered this maneuver, and you also heal the ally subject to this maneuver by a similar amount."
+  },
+  {
+    "Key": "RadiantDawn.NoblesseOblige.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Noblesse Oblige"
+  },
+
+  {
+    "Key": "RadiantDawn.NoblesseOblige.Buff.Description",
+    "enGB": "Ready to save allies from death."
+  },
+  {
+    "Key": "RadiantDawn.SpoilsOfWar.Name",
+    "ProcessTemplates": false,
+    "enGB": "Spoils of War"
+  },
+  {
+    "Key": "RadiantDawn.SpoilsOfWar.Description",
+    "enGB": "Might makes right. While you maintain this stance, allies within close range heal 3 hit points whenever they hit with an attack. At 5th level, this healing increases to your initiation modifier plus 3. At 10th level, this healing increases to be equal to twice your initiation modifier plus 3. This effect can only trigger once per round per ally."
+  },
+  {
+    "Key": "RadiantDawn.SpoilsOfWar.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Spoils of War"
+  },
+
+  {
+    "Key": "RadiantDawn.SpoilsOfWar.Buff.Description",
+    "enGB": "A stance of the Radiant Dawn discipline."
+  },
+  {
+    "Key": "RadiantDawn.SpoilsOfWar.BuffEffect.Name",
+    "ProcessTemplates": false,
+    "enGB": "Spoils of War - Effect"
+  },
+
+  {
+    "Key": "RadiantDawn.SpoilsOfWar.BuffEffect.Description",
+    "enGB": "Might makes right."
+  },
+  {
+    "Key": "RadiantDawn.TheCagedSun.Name",
+    "ProcessTemplates": false,
+    "enGB": "The Caged Sun"
+  },
+  {
+    "Key": "RadiantDawn.TheCagedSun.Description",
+    "enGB": "While you maintain this stance, you cannot heal creatures other than yourself, but any healing you receive is increased by 50%. If you would be healed for more than your maximum amount of hit points, you instead gain an amount of temporary hit points equal to the excess healing. These temporary hit points last for one minute."
+  },
+  {
+    "Key": "RadiantDawn.TheCagedSun.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "The Caged Sun"
+  },
+
+  {
+    "Key": "RadiantDawn.TheCagedSun.Buff.Description",
+    "enGB": "A stance of the Radiant Dawn discipline."
+  },
+  {
+    "Key": "RadiantDawn.TheCagedSun.HPBuff.Name",
+    "ProcessTemplates": false,
+    "enGB": "The Caged Sun - Overhealed"
+  },
+
+  {
+    "Key": "RadiantDawn.TheCagedSun.HPBuff.Description",
+    "enGB": "Burning brighter than ever."
+  }
+]
