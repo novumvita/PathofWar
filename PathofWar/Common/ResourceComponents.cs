@@ -27,4 +27,17 @@ namespace PathofWar.Components
             }
         }
     }
+
+    public class RestoreResourceOnCombatEnd : UnitFactComponentDelegate, IUnitCombatHandler
+    {
+        public BlueprintAbilityResource Resource;
+        public void HandleUnitJoinCombat(UnitEntityData unit)
+        {
+        }
+
+        public void HandleUnitLeaveCombat(UnitEntityData unit)
+        {
+            unit.Resources.Restore(Resource, 0, true);
+        }
+    }
 }

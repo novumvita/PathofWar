@@ -11,11 +11,13 @@ using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
 using Kingmaker.EntitySystem.Stats;
+using Kingmaker.Enums.Damage;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.UnitLogic.Mechanics.Actions;
@@ -25,6 +27,7 @@ using PathofWar.Components;
 using PathofWar.Components.Common;
 using PathofWar.Components.RadiantDawn;
 using PathofWar.Patches;
+using static Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell;
 
 namespace BasicTemplate.Disciplines
 {
@@ -86,6 +89,11 @@ namespace BasicTemplate.Disciplines
         private const string DecreeOfPurityDisplayName = "RadiantDawn.DecreeOfPurity.Name";
         private const string DecreeOfPurityDescription = "RadiantDawn.DecreeOfPurity.Description";
 
+        private const string JudgementDayName = "RadiantDawn.JudgementDay";
+        private const string JudgementDayGuid = "B309DF44-0E88-4D4B-9FED-199B9DFD43C8";
+        private const string JudgementDayDisplayName = "RadiantDawn.JudgementDay.Name";
+        private const string JudgementDayDescription = "RadiantDawn.JudgementDay.Description";
+
         private const string PushTheAdvantageName = "RadiantDawn.PushTheAdvantage";
         private const string PushTheAdvantageGuid = "A6CC09D4-7B03-4253-B8DB-64835C369603";
         private const string PushTheAdvantageDisplayName = "RadiantDawn.PushTheAdvantage.Name";
@@ -124,6 +132,24 @@ namespace BasicTemplate.Disciplines
         private const string SpoilsOfWarBuffEffectDisplayName = "RadiantDawn.SpoilsOfWar.BuffEffect.Name";
         private const string SpoilsOfWarBuffEffectDescription = "RadiantDawn.SpoilsOfWar.BuffEffect.Description";
 
+        private const string ArmamentsOfTheEmpireName = "RadiantDawn.ArmamentsOfTheEmpire";
+        private const string ArmamentsOfTheEmpireGuid = "DB5349DB-966B-45D0-AAE1-7D4AB944E9AB";
+        private const string ArmamentsOfTheEmpireDisplayName = "RadiantDawn.ArmamentsOfTheEmpire.Name";
+        private const string ArmamentsOfTheEmpireDescription = "RadiantDawn.ArmamentsOfTheEmpire.Description";
+
+        private const string ArmamentsOfTheEmpireBuffName = "RadiantDawn.ArmamentsOfTheEmpire.Buff";
+        private const string ArmamentsOfTheEmpireBuffGuid = "455DF34D-8498-419B-824D-E33CB6D8E300";
+        private const string ArmamentsOfTheEmpireBuffDisplayName = "RadiantDawn.ArmamentsOfTheEmpire.Buff.Name";
+        private const string ArmamentsOfTheEmpireBuffDescription = "RadiantDawn.ArmamentsOfTheEmpire.Buff.Description";
+
+        private const string ArmamentsOfTheEmpireAreaEffectName = "RadiantDawn.ArmamentsOfTheEmpire.AreaEffect";
+        private const string ArmamentsOfTheEmpireAreaEffectGuid = "ACBEDDAB-89B9-4E09-8855-03D45EDB0E34";
+
+        private const string ArmamentsOfTheEmpireBuffEffectName = "RadiantDawn.ArmamentsOfTheEmpire.BuffEffect";
+        private const string ArmamentsOfTheEmpireBuffEffectGuid = "1162309E-EFA6-4300-987E-F2875BC55395";
+        private const string ArmamentsOfTheEmpireBuffEffectDisplayName = "RadiantDawn.ArmamentsOfTheEmpire.BuffEffect.Name";
+        private const string ArmamentsOfTheEmpireBuffEffectDescription = "RadiantDawn.ArmamentsOfTheEmpire.BuffEffect.Description";
+
         private const string TheCagedSunName = "RadiantDawn.TheCagedSun";
         private const string TheCagedSunGuid = "9E126087-4FF1-4CC7-A18D-C382CE10837E";
         private const string TheCagedSunDisplayName = "RadiantDawn.TheCagedSun.Name";
@@ -138,6 +164,16 @@ namespace BasicTemplate.Disciplines
         private const string TheCagedSunHPBuffGuid = "4B8B4E85-8CC8-4583-B426-9A1D5B3F011D";
         private const string TheCagedSunHPBuffDisplayName = "RadiantDawn.TheCagedSun.HPBuff.Name";
         private const string TheCagedSunHPBuffDescription = "RadiantDawn.TheCagedSun.HPBuff.Description";
+
+        private const string BattleAgainstTheSunName = "RadiantDawn.BattleAgainstTheSun";
+        private const string BattleAgainstTheSunGuid = "D1A50532-1A12-45B8-86B7-9B6A4A495C93";
+        private const string BattleAgainstTheSunDisplayName = "RadiantDawn.BattleAgainstTheSun.Name";
+        private const string BattleAgainstTheSunDescription = "RadiantDawn.BattleAgainstTheSun.Description";
+
+        private const string BattleAgainstTheSunBuffName = "RadiantDawn.BattleAgainstTheSun.Buff";
+        private const string BattleAgainstTheSunBuffGuid = "83B0726D-F4F6-4FDC-A182-EB01AA1708E6";
+        private const string BattleAgainstTheSunBuffDisplayName = "RadiantDawn.BattleAgainstTheSun.Buff.Name";
+        private const string BattleAgainstTheSunBuffDescription = "RadiantDawn.BattleAgainstTheSun.Buff.Description";
         #endregion
 
         static readonly UnityEngine.Sprite icon = AbilityRefs.AngelStormOfJusticeAbility.Reference.Get().Icon;
@@ -159,10 +195,13 @@ namespace BasicTemplate.Disciplines
             var decree_of_purity = FeatureGen.FeatureFromFact(DecreeOfPurity(), discipline_feat, true, 7);
             var push_the_advantage = FeatureGen.FeatureFromFact(PushTheAdvantage(), discipline_feat, true, 13);
             var noblesse_oblige = FeatureGen.FeatureFromFact(NoblesseOblige(), discipline_feat, true, 13);
+            var judgement_day = FeatureGen.FeatureFromFact(JudgementDay(), discipline_feat, true, 16);
 
             /*STANCES*/
             var spoils_of_war = FeatureGen.FeatureFromFact(SpoilsOfWar(), discipline_feat, false, 1);
             var the_caged_sun = FeatureGen.FeatureFromFact(TheCagedSun(), discipline_feat, false, 7);
+            var armaments_of_the_empire = FeatureGen.FeatureFromFact(ArmamentsOfTheEmpire(), discipline_feat, false, 7);
+            var battle_against_the_sun = FeatureGen.FeatureFromFact(BattleAgainstTheSun(), discipline_feat, false, 7);
 
             return discipline_feat;
         }
@@ -183,8 +222,10 @@ namespace BasicTemplate.Disciplines
                 .SetActionType(UnitCommand.CommandType.Free)
                 .AllowTargeting(friends: true)
                 .SetRange(AbilityRange.Close)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuffPermanent(bolster_buff).Build())
+                .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
         }
 
@@ -202,8 +243,10 @@ namespace BasicTemplate.Disciplines
                 .SetActionType(UnitCommand.CommandType.Free)
                 .AllowTargeting(enemies: true)
                 .SetRange(AbilityRange.Close)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuffPermanent(decree_of_mercy_buff).Build())
+                .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
         }
 
@@ -215,9 +258,11 @@ namespace BasicTemplate.Disciplines
                 .SetActionType(UnitCommand.CommandType.Standard)
                 .AllowTargeting(enemies: true)
                 .SetRange(AbilityRange.Weapon)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
                 .AddComponent<AbilityDeliverAttackWithWeaponOnHit>()
                 .AddAbilityEffectRunAction(ActionsBuilder.New().CombatManeuver(ActionsBuilder.New().Push(ContextValues.Constant(10), false), CombatManeuver.Trip, newStat: StatType.Charisma, useCasterLevelAsBaseAttack: true).Build())
+                .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
         }
 
@@ -229,9 +274,11 @@ namespace BasicTemplate.Disciplines
                 .SetActionType(UnitCommand.CommandType.Standard)
                 .AllowTargeting(enemies: true)
                 .SetRange(AbilityRange.Weapon)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
                 .AddComponent<AbilityDeliverAttackWithWeaponOnHit>()
                 .AddAbilityEffectRunAction(ActionsBuilder.New().Add<RadiantHeal>().Build())
+                .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
         }
 
@@ -250,9 +297,11 @@ namespace BasicTemplate.Disciplines
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
                 .AllowTargeting(enemies: true)
                 .SetRange(AbilityRange.Weapon)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddComponent<AbilityDeliverAttackWithWeaponOnHit>()
                 .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(decree_of_death_buff, ContextDuration.Fixed(1)).Build())
                 .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Charisma))
+                .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
         }
 
@@ -265,8 +314,10 @@ namespace BasicTemplate.Disciplines
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
                 .AllowTargeting(enemies: true)
                 .SetRange(AbilityRange.Weapon)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddComponent<AbilityDeliverAttackWithWeaponOnHit>()
-                .AddAbilityEffectRunAction(ActionsBuilder.New().DealDamage(DamageTypes.Direct(), ContextDice.Value(DiceType.D6, 2)).DispelMagic(ContextActionDispelMagic.BuffType.FromSpells, RuleDispelMagic.CheckType.CasterLevel, 9).Build())
+                .AddAbilityEffectRunAction(ActionsBuilder.New().DealDamage(DamageTypes.Energy(DamageEnergyType.Holy), ContextDice.Value(DiceType.D6, 2)).DispelMagic(ContextActionDispelMagic.BuffType.FromSpells, RuleDispelMagic.CheckType.CasterLevel, 9).Build())
+                .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
         }
 
@@ -277,9 +328,28 @@ namespace BasicTemplate.Disciplines
                 .SetDescription(DecreeOfPurityDescription)
                 .SetActionType(UnitCommand.CommandType.Swift)
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
-                .AddAbilityAoERadius(radius: 30.Feet(), targetType: TargetType.Ally)
                 .SetRange(AbilityRange.Close)
+                .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().Add<RadiantHeal>().Build())
+                .SetType(AbilityType.Extraordinary)
+                .SetIcon(icon).Configure();
+        }
+
+        internal static BlueprintAbility JudgementDay()
+        {
+            return AbilityConfigurator.New(JudgementDayName, JudgementDayGuid)
+                .SetDisplayName(JudgementDayDisplayName)
+                .SetDescription(JudgementDayDescription)
+                .SetIsFullRoundAction()
+                .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
+                .AddAbilityTargetsAround(radius: 100.Feet(), targetType: TargetType.Any, includeDead: true)
+                .SetAnimation(CastAnimationStyle.Omni)
+                .AddAbilityEffectRunAction(actions: ActionsBuilder.New()
+                    .Conditional(ConditionsBuilder.New().IsAlly().Build(),
+                    ActionsBuilder.New().BreathOfLife(ContextDice.Value(DiceType.Zero, 0, 50)).Build(),
+                    ActionsBuilder.New().DealDamage(DamageTypes.Energy(DamageEnergyType.Holy), ContextDice.Value(DiceType.Zero, 0, 50)).Build()).Build())
+                .AddAbilitySpawnFx(prefabLink: AbilityRefs.AngelEyeOfTheSun.Reference.Get().GetComponent<AbilitySpawnFx>().PrefabLink)
+                .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
         }
 
@@ -347,6 +417,38 @@ namespace BasicTemplate.Disciplines
                 .SetIcon(icon).Configure();
         }
 
+        internal static BlueprintActivatableAbility ArmamentsOfTheEmpire()
+        {
+
+            var spoils_of_war_area_buff = BuffConfigurator.New(ArmamentsOfTheEmpireBuffEffectName, ArmamentsOfTheEmpireBuffEffectGuid)
+                .SetDisplayName(ArmamentsOfTheEmpireBuffEffectDisplayName)
+                .SetDescription(ArmamentsOfTheEmpireBuffEffectDescription)
+                .AddBuffEnchantAnyWeapon(WeaponEnchantmentRefs.Holy.Reference.Get())
+                .AddBuffEnchantAnyWeapon(WeaponEnchantmentRefs.TemporaryEnhancement3.Reference.Get())
+                .AddBuffEnchantArmor([ArmorEnchantmentRefs.TemporaryArmorEnhancementBonus3.Reference.Get()])
+                .SetIcon(icon).Configure();
+
+            var spoils_of_war_area_effect = AbilityAreaEffectConfigurator.New(ArmamentsOfTheEmpireAreaEffectName, ArmamentsOfTheEmpireAreaEffectGuid)
+                .SetShape(AreaEffectShape.Cylinder)
+                .SetSize(30.Feet())
+                .AddAbilityAreaEffectBuff(spoils_of_war_area_buff, condition: ConditionsBuilder.New().IsAlly().Build())
+                .Configure();
+
+            var spoils_of_war_buff = BuffConfigurator.New(ArmamentsOfTheEmpireBuffName, ArmamentsOfTheEmpireBuffGuid)
+                .SetDisplayName(ArmamentsOfTheEmpireBuffDisplayName)
+                .SetDescription(ArmamentsOfTheEmpireBuffDescription)
+                .AddAreaEffect(spoils_of_war_area_effect)
+                .SetIcon(icon).Configure();
+
+            return ActivatableAbilityConfigurator.New(ArmamentsOfTheEmpireName, ArmamentsOfTheEmpireGuid)
+                .SetDisplayName(ArmamentsOfTheEmpireDisplayName)
+                .SetDescription(ArmamentsOfTheEmpireDescription)
+                .SetBuff(spoils_of_war_buff)
+                .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
+                .SetDeactivateImmediately()
+                .SetIcon(icon).Configure();
+        }
+
         internal static BlueprintActivatableAbility TheCagedSun()
         {
             var the_caged_sun_temp_hp_buff = BuffConfigurator.New(TheCagedSunHPBuffName, TheCagedSunHPBuffGuid)
@@ -364,6 +466,24 @@ namespace BasicTemplate.Disciplines
             return ActivatableAbilityConfigurator.New(TheCagedSunName, TheCagedSunGuid)
                 .SetDisplayName(TheCagedSunDisplayName)
                 .SetDescription(TheCagedSunDescription)
+                .SetBuff(the_caged_sun_buff)
+                .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
+                .SetDeactivateImmediately()
+                .SetIcon(icon).Configure();
+        }
+
+        internal static BlueprintActivatableAbility BattleAgainstTheSun()
+        {
+            var the_caged_sun_buff = BuffConfigurator.New(BattleAgainstTheSunBuffName, BattleAgainstTheSunBuffGuid)
+                .SetDisplayName(BattleAgainstTheSunBuffDisplayName)
+                .SetDescription(BattleAgainstTheSunBuffDescription)
+                .AddComponent<BattleAgainstTheSun>()
+                .AddFacts([BuffRefs.DayLightBuff.Reference.Get()])
+                .SetIcon(icon).Configure();
+
+            return ActivatableAbilityConfigurator.New(BattleAgainstTheSunName, BattleAgainstTheSunGuid)
+                .SetDisplayName(BattleAgainstTheSunDisplayName)
+                .SetDescription(BattleAgainstTheSunDescription)
                 .SetBuff(the_caged_sun_buff)
                 .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
                 .SetDeactivateImmediately()

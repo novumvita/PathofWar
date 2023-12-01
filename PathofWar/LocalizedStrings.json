@@ -144,6 +144,16 @@
     "enGB": "A single word and a wave of the hand purifies those who would stand with you. Heal yourself and allies within close range for a total number of hit points proportional to your initiation modifier, divided among you and your allies, prioritizing the most injured."
   },
   {
+    "Key": "RadiantDawn.JudgementDay.Name",
+    "ProcessTemplates": false,
+    "enGB": "Judgement Day"
+  },
+
+  {
+    "Key": "RadiantDawn.JudgementDay.Description",
+    "enGB": "Call down Judgement, smiting enemies and healing allies. All enemies within the area are consumed by pure akashic flame, taking 50 points of holy damage. Allies within range are healed for 50 points of damage. This healing acts like that of a breath of life spell, reviving targets."
+  },
+  {
     "Key": "RadiantDawn.PushTheAdvantage.Name",
     "ProcessTemplates": false,
     "enGB": "Push the Advantage"
@@ -239,5 +249,53 @@
   {
     "Key": "RadiantDawn.TheCagedSun.HPBuff.Description",
     "enGB": "Burning brighter than ever."
+  },
+  {
+    "Key": "RadiantDawn.ArmamentsOfTheEmpire.Name",
+    "ProcessTemplates": false,
+    "enGB": "Armaments of the Empire"
+  },
+  {
+    "Key": "RadiantDawn.ArmamentsOfTheEmpire.Description",
+    "enGB": "A thin layer of akasha flows forth from you and covers your and your allies’ weapons and armor. While you maintain this stance, you empower the weapons and armor of allies within close range. Each empowered weapon gains the benefit of the Holy enchantment and +3 enhancement, and each empowered armor gains the benefit of +3 enhancement."
+  },
+  {
+    "Key": "RadiantDawn.ArmamentsOfTheEmpire.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Armaments of the Empire"
+  },
+
+  {
+    "Key": "RadiantDawn.ArmamentsOfTheEmpire.Buff.Description",
+    "enGB": "A stance of the Radiant Dawn discipline."
+  },
+  {
+    "Key": "RadiantDawn.ArmamentsOfTheEmpire.BuffEffect.Name",
+    "ProcessTemplates": false,
+    "enGB": "Armaments of the Empire - Effect"
+  },
+
+  {
+    "Key": "RadiantDawn.ArmamentsOfTheEmpire.BuffEffect.Description",
+    "enGB": "Wears the Armaments of the Empire."
+  },
+  {
+    "Key": "RadiantDawn.BattleAgainstTheSun.Name",
+    "ProcessTemplates": false,
+    "enGB": "Battle Against the Sun"
+  },
+  {
+    "Key": "RadiantDawn.BattleAgainstTheSun.Description",
+    "enGB": "To challenge you is to challenge the sun itself: An exercise in futility. While you maintain this stance, you shed bright light, as if by a daylight spell, out to close range. At the start of each round, you emit a flash of light within your daylight range. Enemies within the area take damage equal to your initiator level + the number of rounds the combat has lasted. A successful Reflex save (DC 16 + initiation modifier) halves this damage. Allies caught within the light are instead healed for a number of hit points equal to your initiator level + the number of rounds the combat has lasted."
+  },
+  {
+    "Key": "RadiantDawn.BattleAgainstTheSun.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Battle Against the Sun"
+  },
+
+  {
+    "Key": "RadiantDawn.BattleAgainstTheSun.Buff.Description",
+    "enGB": "A stance of the Radiant Dawn discipline."
   }
 ]

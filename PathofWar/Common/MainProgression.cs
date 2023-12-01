@@ -9,6 +9,7 @@ using BlueprintCore.Blueprints.References;
 using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Selection;
+using PathofWar.Components;
 
 namespace PathofWar.Common
 {
@@ -84,7 +85,7 @@ namespace PathofWar.Common
                 .SetDescription(MainSelectionDescription)
                 .AddToAllFeatures(RadiantDawn.Configure())
                 .AddAbilityResources(resource: maneuver_count, restoreAmount: true)
-                .AddCombatStateTrigger(combatStartActions: ActionsBuilder.New().RestoreResource(maneuver_count).Build())
+                .AddComponent<RestoreResourceOnCombatEnd>(c => c.Resource = maneuver_count)
                 .Configure();
 
             var feat_prog = ProgressionConfigurator.For(ProgressionRefs.BasicFeatsProgression)

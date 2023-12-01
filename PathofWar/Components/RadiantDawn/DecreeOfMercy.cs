@@ -1,7 +1,6 @@
 ﻿using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
-using PathofWar.Common;
 
 namespace PathofWar.Components.RadiantDawn
 {
