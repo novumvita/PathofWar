@@ -6,7 +6,7 @@ Liberties have been taken for technical reasons and for ease of implementation, 
 All characters will be able to choose a discipline at level 1 and maneuvers and stances as they level up.
 
 ## [Disciplines](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/disciplines-and-maneuvers/):
-  * [Radiant Dawn](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/disciplines-and-maneuvers/alternative-rule-systems-path-of-war-disciplines-and-maneuvers-radiant-dawn-maneuvers) : Includes 9 maneuvers and 4 stances.
+  * [Radiant Dawn](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/disciplines-and-maneuvers/alternative-rule-systems-path-of-war-disciplines-and-maneuvers-radiant-dawn-maneuvers) : Includes 10 maneuvers and 4 stances.
  
 ## Feedback
 You can reach me (@zedel) on [Discord](https://discord.com/invite/owlcat) in the #mod-user-general channel.
