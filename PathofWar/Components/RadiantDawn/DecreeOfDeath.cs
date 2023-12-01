@@ -8,14 +8,15 @@ namespace PathofWar.Components.RadiantDawn
     {
         public void OnEventAboutToTrigger(RuleDealDamage evt)
         {
+            foreach (BaseDamage item in evt.DamageBundle)
+            {
+                item.BonusPercent = 50;
+            }
+            evt.Target.Buffs.RemoveFact(Fact);
         }
 
         public void OnEventDidTrigger(RuleDealDamage evt)
         {
-            var initiator = Fact.MaybeContext.MaybeCaster;
-            evt.Target.Buffs.RemoveFact(Fact);
-            var new_evt = new RuleDealDamage(initiator, evt.Target, evt.m_DamageBundle) { Half = true, Reason = Context };
-            Context.TriggerRule(new_evt);
         }
     }
 }

@@ -8,7 +8,6 @@ using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.Visual.Particles;
 using PathofWar.Utilities;
-using static Kingmaker.UI.CanvasScalerWorkaround;
 
 namespace PathofWar.Components.RadiantDawn
 {

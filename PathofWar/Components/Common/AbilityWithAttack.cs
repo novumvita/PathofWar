@@ -3,10 +3,12 @@ using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Items;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic.Abilities;
+using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.Commands;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker;
+using Kingmaker.Visual.Particles;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,6 +24,9 @@ namespace PathofWar.Components.Common
 
     public class AbilityDeliverAttackWithWeaponOnHit : AbilityDeliverEffect
     {
+        public BlueprintAbility ability_for_fx_self = null;
+        public BlueprintAbility ability_for_fx_target = null;
+        public bool on_self = true;
         public override IEnumerator<AbilityDeliveryTarget> Deliver(AbilityExecutionContext context, TargetWrapper target)
         {
             if (target.Unit == null)
@@ -41,6 +46,17 @@ namespace PathofWar.Components.Common
                 cmd.Interrupt();
                 yield break;
             }
+
+            if (ability_for_fx_self != null)
+            {
+                FxHelper.SpawnFxOnUnit(ability_for_fx_self.GetComponent<AbilitySpawnFx>().PrefabLink.Load(), context.Caster.View);
+            }
+
+            if (ability_for_fx_target != null)
+            {
+                FxHelper.SpawnFxOnUnit(ability_for_fx_target.GetComponent<AbilitySpawnFx>().PrefabLink.Load(), target.Unit.View);
+            }
+
             bool hitHandled = false;
             bool isMelee = weapon.Blueprint.IsMelee;
             for (; ; )

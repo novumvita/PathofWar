@@ -1,6 +1,4 @@
 ﻿using BasicTemplate.Disciplines;
-using BlueprintCore.Actions.Builder;
-using BlueprintCore.Actions.Builder.ContextEx;
 using BlueprintCore.Blueprints.Configurators.Root;
 using BlueprintCore.Blueprints.CustomConfigurators;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes;
@@ -9,6 +7,7 @@ using BlueprintCore.Blueprints.References;
 using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes.Selection;
+using Kingmaker.Designers.Mechanics.Facts;
 using PathofWar.Components;
 
 namespace PathofWar.Common
@@ -78,6 +77,7 @@ namespace PathofWar.Common
                 .SetDisplayName(MainProgressionDisplayName)
                 .SetDescription(MainProgressionDescription)
                 .AddToLevelEntries(lb.GetEntries())
+                .AddFeatureToNPC(checkParty: true)
                 .Configure();
 
             var discipline_selection = FeatureSelectionConfigurator.New(MainSelectionName, MainSelectionGuid)
@@ -86,6 +86,7 @@ namespace PathofWar.Common
                 .AddToAllFeatures(RadiantDawn.Configure())
                 .AddAbilityResources(resource: maneuver_count, restoreAmount: true)
                 .AddComponent<RestoreResourceOnCombatEnd>(c => c.Resource = maneuver_count)
+                .AddFeatureToNPC(checkParty: true)
                 .Configure();
 
             var feat_prog = ProgressionConfigurator.For(ProgressionRefs.BasicFeatsProgression)

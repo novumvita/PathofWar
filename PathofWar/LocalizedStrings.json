@@ -124,6 +124,26 @@
     "enGB": "Takes 50% additional damage from the next instance of damage."
   },
   {
+    "Key": "RadiantDawn.TyrantsEnd.Name",
+    "ProcessTemplates": false,
+    "enGB": "Tyrant's End"
+  },
+
+  {
+    "Key": "RadiantDawn.TyrantsEnd.Description",
+    "enGB": "This powerful blow brings the end to tyrant’s reigns. Make an attack. If it hits, you deal weapon damage as normal plus an additional 6d6 points of damage, and the target has their immunities, resistances, and damage reduction suppressed for 1 round, becoming Vulnerable to all damage for 1 round."
+  },
+  {
+    "Key": "RadiantDawn.TyrantsEnd.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "End of a Reign"
+  },
+
+  {
+    "Key": "RadiantDawn.TyrantsEnd.Buff.Description",
+    "enGB": "Immunities, resistances, and damage reduction are suppressed. Vulnerable to all damage."
+  },
+  {
     "Key": "RadiantDawn.ShatterSpell.Name",
     "ProcessTemplates": false,
     "enGB": "Shatter Spell"

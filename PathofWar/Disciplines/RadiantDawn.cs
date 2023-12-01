@@ -1,5 +1,6 @@
 ﻿using BlueprintCore.Actions.Builder;
 using BlueprintCore.Actions.Builder.ContextEx;
+using BlueprintCore.Blueprints.Components.Replacements;
 using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
@@ -10,16 +11,20 @@ using BlueprintCore.Conditions.Builder.ContextEx;
 using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums.Damage;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
+using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.ActivatableAbilities;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
+using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.Utility;
 using PathofWar.Common;
@@ -27,6 +32,7 @@ using PathofWar.Components;
 using PathofWar.Components.Common;
 using PathofWar.Components.RadiantDawn;
 using PathofWar.Patches;
+using System.Linq;
 using static Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell;
 
 namespace BasicTemplate.Disciplines
@@ -78,6 +84,16 @@ namespace BasicTemplate.Disciplines
         private const string DecreeOfDeathBuffGuid = "433BC57F-0A31-473F-8318-F96EA2524BD1";
         private const string DecreeOfDeathBuffDisplayName = "RadiantDawn.DecreeOfDeath.Buff.Name";
         private const string DecreeOfDeathBuffDescription = "RadiantDawn.DecreeOfDeath.Buff.Description";
+
+        private const string TyrantsEndName = "RadiantDawn.TyrantsEnd";
+        private const string TyrantsEndGuid = "6FFA1BCF-5DA2-4135-8D7A-CDA5C05E7EED";
+        private const string TyrantsEndDisplayName = "RadiantDawn.TyrantsEnd.Name";
+        private const string TyrantsEndDescription = "RadiantDawn.TyrantsEnd.Description";
+
+        private const string TyrantsEndBuffName = "RadiantDawn.TyrantsEnd.Buff";
+        private const string TyrantsEndBuffGuid = "45B194A9-343E-4361-9BD3-29DF6C6E1586";
+        private const string TyrantsEndBuffDisplayName = "RadiantDawn.TyrantsEnd.Buff.Name";
+        private const string TyrantsEndBuffDescription = "RadiantDawn.TyrantsEnd.Buff.Description";
 
         private const string ShatterSpellName = "RadiantDawn.ShatterSpell";
         private const string ShatterSpellGuid = "B463AAAB-781D-4CAF-A812-C72EA041E809";
@@ -189,13 +205,14 @@ namespace BasicTemplate.Disciplines
             var bolster = FeatureGen.FeatureFromFact(Bolster(), discipline_feat, true, 1);
             var decree_of_mercy = FeatureGen.FeatureFromFact(DecreeOfMercy(), discipline_feat, true, 1);
             var dismiss = FeatureGen.FeatureFromFact(Dismiss(), discipline_feat, true, 1);
-            var staunching_strike = FeatureGen.FeatureFromFact(LifeburstStrike(), discipline_feat, true, 1);
+            var lifeburst_strike = FeatureGen.FeatureFromFact(LifeburstStrike(), discipline_feat, true, 1);
             var decree_of_death = FeatureGen.FeatureFromFact(DecreeOfDeath(), discipline_feat, true, 7);
             var shatter_spell = FeatureGen.FeatureFromFact(ShatterSpell(), discipline_feat, true, 4);
             var decree_of_purity = FeatureGen.FeatureFromFact(DecreeOfPurity(), discipline_feat, true, 7);
             var push_the_advantage = FeatureGen.FeatureFromFact(PushTheAdvantage(), discipline_feat, true, 13);
             var noblesse_oblige = FeatureGen.FeatureFromFact(NoblesseOblige(), discipline_feat, true, 13);
             var judgement_day = FeatureGen.FeatureFromFact(JudgementDay(), discipline_feat, true, 16);
+            var tyrants_end = FeatureGen.FeatureFromFact(TyrantsEnd(), discipline_feat, true, 16);
 
             /*STANCES*/
             var spoils_of_war = FeatureGen.FeatureFromFact(SpoilsOfWar(), discipline_feat, false, 1);
@@ -260,7 +277,7 @@ namespace BasicTemplate.Disciplines
                 .SetRange(AbilityRange.Weapon)
                 .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
-                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>()
+                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>(c => { c.ability_for_fx_self = AbilityRefs.CureLightWounds.Reference.Get(); })
                 .AddAbilityEffectRunAction(ActionsBuilder.New().CombatManeuver(ActionsBuilder.New().Push(ContextValues.Constant(10), false), CombatManeuver.Trip, newStat: StatType.Charisma, useCasterLevelAsBaseAttack: true).Build())
                 .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
@@ -276,7 +293,7 @@ namespace BasicTemplate.Disciplines
                 .SetRange(AbilityRange.Weapon)
                 .SetAnimation(CastAnimationStyle.Immediate)
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
-                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>()
+                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>(c => { c.ability_for_fx_self = AbilityRefs.CureLightWounds.Reference.Get(); })
                 .AddAbilityEffectRunAction(ActionsBuilder.New().Add<RadiantHeal>().Build())
                 .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
@@ -298,8 +315,34 @@ namespace BasicTemplate.Disciplines
                 .AllowTargeting(enemies: true)
                 .SetRange(AbilityRange.Weapon)
                 .SetAnimation(CastAnimationStyle.Immediate)
-                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>()
+                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>(c => { c.ability_for_fx_self = AbilityRefs.CureLightWounds.Reference.Get(); })
                 .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(decree_of_death_buff, ContextDuration.Fixed(1)).Build())
+                .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Charisma))
+                .SetType(AbilityType.Extraordinary)
+                .SetIcon(icon).Configure();
+        }
+
+        internal static BlueprintAbility TyrantsEnd()
+        {
+            var features = FeatureRefs.All.Select(c => c.Reference.Get()).Where(c => FeatureChecker.IsFeatureImmunityOrResistance(c));
+
+            var tyrants_end_buff = BuffConfigurator.New(TyrantsEndBuffName, TyrantsEndBuffGuid)
+                .SetDisplayName(TyrantsEndBuffDisplayName)
+                .SetDescription(TyrantsEndBuffDescription)
+                .AddComponent<SuppressFeatures>(c => c.features = features.ToList())
+                .AddComponent<TyrantsEnd>()
+                .SetIcon(icon).Configure();
+
+            return AbilityConfigurator.New(TyrantsEndName, TyrantsEndGuid)
+                .SetDisplayName(TyrantsEndDisplayName)
+                .SetDescription(TyrantsEndDescription)
+                .SetActionType(UnitCommand.CommandType.Standard)
+                .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
+                .AllowTargeting(enemies: true)
+                .SetRange(AbilityRange.Weapon)
+                .SetAnimation(CastAnimationStyle.Immediate)
+                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>(c => { c.ability_for_fx_self = AbilityRefs.CureLightWounds.Reference.Get(); c.ability_for_fx_target = AbilityRefs.SmiteEvilAbility.Reference.Get(); })
+                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(tyrants_end_buff, ContextDuration.Fixed(1)).Build())
                 .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Charisma))
                 .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
@@ -315,7 +358,7 @@ namespace BasicTemplate.Disciplines
                 .AllowTargeting(enemies: true)
                 .SetRange(AbilityRange.Weapon)
                 .SetAnimation(CastAnimationStyle.Immediate)
-                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>()
+                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>(c => { c.ability_for_fx_self = AbilityRefs.CureLightWounds.Reference.Get(); })
                 .AddAbilityEffectRunAction(ActionsBuilder.New().DealDamage(DamageTypes.Energy(DamageEnergyType.Holy), ContextDice.Value(DiceType.D6, 2)).DispelMagic(ContextActionDispelMagic.BuffType.FromSpells, RuleDispelMagic.CheckType.CasterLevel, 9).Build())
                 .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();
