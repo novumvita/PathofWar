@@ -6,9 +6,9 @@ using BlueprintCore.Blueprints.CustomConfigurators.Classes.Selection;
 using BlueprintCore.Blueprints.References;
 using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Classes.Selection;
-using Kingmaker.Designers.Mechanics.Facts;
 using PathofWar.Components;
+using PathofWar.Disciplines;
+using System.Collections.Generic;
 
 namespace PathofWar.Common
 {
@@ -40,29 +40,47 @@ namespace PathofWar.Common
         #endregion
 
         public static BlueprintAbilityResource maneuver_count;
-        public static BlueprintFeatureSelection maneuver_selection;
-        public static BlueprintFeatureSelection stance_selection;
 
         internal static void Configure()
         {
-
             maneuver_count = AbilityResourceConfigurator.New(ResourceName, ResourceGuid)
                 .SetMaxAmount(ResourceAmountBuilder.New(0).IncreaseByLevelStartPlusDivStep(otherClassLevelsMultiplier: 1, startingLevel: 1, startingBonus: 3, levelsPerStep: 3, bonusPerStep: 1, minBonus: 0))
                 .Configure();
 
-            maneuver_selection = FeatureSelectionConfigurator.New(ManeuverSelectionName, ManeuverSelectionGuid)
+            List<Discipline> disciplines = new()
+            {
+                RadiantDawn.Configure(),
+                VeiledMoon.Configure(),
+            };
+
+            var maneuver_selection_0 = FeatureSelectionConfigurator.New(ManeuverSelectionName, ManeuverSelectionGuid)
                 .SetDisplayName(ManeuverSelectionDisplayName)
                 .SetDescription(ManeuverSelectionDescription)
                 .AddToAllFeatures(FeatureSelectionRefs.BasicFeatSelection.Reference.Get())
-                .SetShowThisSelection(false)
-                .Configure();
+                .SetShowThisSelection(false);
 
-            stance_selection = FeatureSelectionConfigurator.New(StanceSelectionName, StanceSelectionGuid)
+            var stance_selection_0 = FeatureSelectionConfigurator.New(StanceSelectionName, StanceSelectionGuid)
                 .SetDisplayName(StanceSelectionDisplayName)
                 .SetDescription(StanceSelectionDescription)
                 .AddToAllFeatures(FeatureSelectionRefs.BasicFeatSelection.Reference.Get())
-                .SetShowThisSelection(false)
-                .Configure();
+                .SetShowThisSelection(false);
+
+            var discipline_selection_0 = FeatureSelectionConfigurator.New(MainSelectionName, MainSelectionGuid)
+                .SetDisplayName(MainSelectionDisplayName)
+                .SetDescription(MainSelectionDescription)
+                .AddAbilityResources(resource: maneuver_count, restoreAmount: true)
+                .AddComponent<RestoreResourceOnCombatEnd>(c => c.Resource = maneuver_count);
+
+            foreach (var discipline in disciplines)
+            {
+                maneuver_selection_0.AddToAllFeatures(discipline.maneuver_selection);
+                stance_selection_0.AddToAllFeatures(discipline.stance_selection);
+                discipline_selection_0.AddToAllFeatures(discipline.discipline);
+            }
+
+            var maneuver_selection = maneuver_selection_0.Configure();
+            var stance_selection = stance_selection_0.Configure();
+            var discipline_selection = discipline_selection_0.Configure();
 
             var lb = LevelEntryBuilder.New()
                 .AddEntry(1, maneuver_selection, maneuver_selection, maneuver_selection, stance_selection)
@@ -77,25 +95,15 @@ namespace PathofWar.Common
                 .SetDisplayName(MainProgressionDisplayName)
                 .SetDescription(MainProgressionDescription)
                 .AddToLevelEntries(lb.GetEntries())
-                .AddFeatureToNPC(checkParty: true)
-                .Configure();
-
-            var discipline_selection = FeatureSelectionConfigurator.New(MainSelectionName, MainSelectionGuid)
-                .SetDisplayName(MainSelectionDisplayName)
-                .SetDescription(MainSelectionDescription)
-                .AddToAllFeatures(RadiantDawn.Configure())
-                .AddAbilityResources(resource: maneuver_count, restoreAmount: true)
-                .AddComponent<RestoreResourceOnCombatEnd>(c => c.Resource = maneuver_count)
-                .AddFeatureToNPC(checkParty: true)
                 .Configure();
 
             var feat_prog = ProgressionConfigurator.For(ProgressionRefs.BasicFeatsProgression)
                 .AddToLevelEntry(1, discipline_selection, discipline_progression)
-                .Configure(delayed: true);
+                .Configure();
 
             RootConfigurator.For(RootRefs.BlueprintRoot)
                 .ModifyProgression(c => c.m_FeatsProgression = feat_prog.ToReference<BlueprintProgressionReference>())
-                .Configure(delayed: true);
+                .Configure();
         }
     }
 }

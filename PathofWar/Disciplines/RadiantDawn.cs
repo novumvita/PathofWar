@@ -1,8 +1,8 @@
 ﻿using BlueprintCore.Actions.Builder;
 using BlueprintCore.Actions.Builder.ContextEx;
-using BlueprintCore.Blueprints.Components.Replacements;
 using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+using BlueprintCore.Blueprints.CustomConfigurators.Classes.Selection;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
@@ -10,21 +10,16 @@ using BlueprintCore.Conditions.Builder;
 using BlueprintCore.Conditions.Builder.ContextEx;
 using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
-using Kingmaker.Blueprints.Classes;
-using Kingmaker.Designers.Mechanics.Facts;
 using Kingmaker.EntitySystem.Stats;
 using Kingmaker.Enums.Damage;
 using Kingmaker.RuleSystem;
 using Kingmaker.RuleSystem.Rules;
-using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Abilities.Components.Base;
 using Kingmaker.UnitLogic.ActivatableAbilities;
-using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.Utility;
 using PathofWar.Common;
@@ -44,6 +39,12 @@ namespace BasicTemplate.Disciplines
         private const string RadiantDawnProgressionGuid = "ABA5785C-977C-42E7-A13F-57E90159471F";
         private const string RadiantDawnProgressionDisplayName = "RadiantDawn.Name";
         private const string RadiantDawnProgressionDescription = "RadiantDawn.Description";
+
+        private const string RadiantDawnManeuverSelectionName = "RadiantDawn.ManeuverSelection";
+        private const string RadiantDawnManeuverSelectionGuid = "4A32371B-DC1C-463F-901A-5F0C66BA17E2";
+
+        private const string RadiantDawnStanceSelectionName = "RadiantDawn.StanceSelection";
+        private const string RadiantDawnStanceSelectionGuid = "8DF93188-5C8A-46F1-BBEA-749BE4514465";
 
         private const string BolsterName = "RadiantDawn.Bolster";
         private const string BolsterGuid = "BCB5D2FA-34FA-409E-A646-5D43AD39909F";
@@ -194,33 +195,52 @@ namespace BasicTemplate.Disciplines
 
         static readonly UnityEngine.Sprite icon = AbilityRefs.AngelStormOfJusticeAbility.Reference.Get().Icon;
 
-        internal static BlueprintFeature Configure()
+        internal static Discipline Configure()
         {
             var discipline_feat = FeatureConfigurator.New(RadiantDawnProgressionName, RadiantDawnProgressionGuid)
                 .SetDisplayName(RadiantDawnProgressionDisplayName)
                 .SetDescription(RadiantDawnProgressionDescription)
                 .SetIcon(icon).Configure();
 
+            var maneuver_selection = FeatureSelectionConfigurator.New(RadiantDawnManeuverSelectionName, RadiantDawnManeuverSelectionGuid)
+                .SetDisplayName(RadiantDawnProgressionDisplayName)
+                .SetDescription(RadiantDawnProgressionDescription)
+                .SetIcon(icon)
+                .Configure();
+
+            var stance_selection = FeatureSelectionConfigurator.New(RadiantDawnStanceSelectionName, RadiantDawnStanceSelectionGuid)
+                .SetDisplayName(RadiantDawnProgressionDisplayName)
+                .SetDescription(RadiantDawnProgressionDescription)
+                .SetIcon(icon)
+                .Configure();
+
             /*MANEUVERS*/
-            var bolster = FeatureGen.FeatureFromFact(Bolster(), discipline_feat, true, 1);
-            var decree_of_mercy = FeatureGen.FeatureFromFact(DecreeOfMercy(), discipline_feat, true, 1);
-            var dismiss = FeatureGen.FeatureFromFact(Dismiss(), discipline_feat, true, 1);
-            var lifeburst_strike = FeatureGen.FeatureFromFact(LifeburstStrike(), discipline_feat, true, 1);
-            var decree_of_death = FeatureGen.FeatureFromFact(DecreeOfDeath(), discipline_feat, true, 7);
-            var shatter_spell = FeatureGen.FeatureFromFact(ShatterSpell(), discipline_feat, true, 4);
-            var decree_of_purity = FeatureGen.FeatureFromFact(DecreeOfPurity(), discipline_feat, true, 7);
-            var push_the_advantage = FeatureGen.FeatureFromFact(PushTheAdvantage(), discipline_feat, true, 13);
-            var noblesse_oblige = FeatureGen.FeatureFromFact(NoblesseOblige(), discipline_feat, true, 13);
-            var judgement_day = FeatureGen.FeatureFromFact(JudgementDay(), discipline_feat, true, 16);
-            var tyrants_end = FeatureGen.FeatureFromFact(TyrantsEnd(), discipline_feat, true, 16);
+            var bolster = FeatureGen.FeatureFromFact(Bolster(), discipline_feat, maneuver_selection, 1);
+            var decree_of_mercy = FeatureGen.FeatureFromFact(DecreeOfMercy(), discipline_feat, maneuver_selection, 1);
+            var dismiss = FeatureGen.FeatureFromFact(Dismiss(), discipline_feat, maneuver_selection, 1);
+            var lifeburst_strike = FeatureGen.FeatureFromFact(LifeburstStrike(), discipline_feat, maneuver_selection, 1);
+            var decree_of_death = FeatureGen.FeatureFromFact(DecreeOfDeath(), discipline_feat, maneuver_selection, 7);
+            var shatter_spell = FeatureGen.FeatureFromFact(ShatterSpell(), discipline_feat, maneuver_selection, 4);
+            var decree_of_purity = FeatureGen.FeatureFromFact(DecreeOfPurity(), discipline_feat, maneuver_selection, 7);
+            var push_the_advantage = FeatureGen.FeatureFromFact(PushTheAdvantage(), discipline_feat, maneuver_selection, 13);
+            var noblesse_oblige = FeatureGen.FeatureFromFact(NoblesseOblige(), discipline_feat, maneuver_selection, 13);
+            var judgement_day = FeatureGen.FeatureFromFact(JudgementDay(), discipline_feat, maneuver_selection, 16);
+            var tyrants_end = FeatureGen.FeatureFromFact(TyrantsEnd(), discipline_feat, maneuver_selection, 16);
 
             /*STANCES*/
-            var spoils_of_war = FeatureGen.FeatureFromFact(SpoilsOfWar(), discipline_feat, false, 1);
-            var the_caged_sun = FeatureGen.FeatureFromFact(TheCagedSun(), discipline_feat, false, 7);
-            var armaments_of_the_empire = FeatureGen.FeatureFromFact(ArmamentsOfTheEmpire(), discipline_feat, false, 7);
-            var battle_against_the_sun = FeatureGen.FeatureFromFact(BattleAgainstTheSun(), discipline_feat, false, 7);
+            var spoils_of_war = FeatureGen.FeatureFromFact(SpoilsOfWar(), discipline_feat, stance_selection, 1);
+            var the_caged_sun = FeatureGen.FeatureFromFact(TheCagedSun(), discipline_feat, stance_selection, 7);
+            var armaments_of_the_empire = FeatureGen.FeatureFromFact(ArmamentsOfTheEmpire(), discipline_feat, stance_selection, 7);
+            var battle_against_the_sun = FeatureGen.FeatureFromFact(BattleAgainstTheSun(), discipline_feat, stance_selection, 7);
 
-            return discipline_feat;
+            Discipline discipline = new Discipline()
+            {
+                discipline = discipline_feat,
+                maneuver_selection = maneuver_selection,
+                stance_selection = stance_selection
+            };
+
+            return discipline;
         }
 
         internal static BlueprintAbility Bolster()
@@ -342,7 +362,7 @@ namespace BasicTemplate.Disciplines
                 .SetRange(AbilityRange.Weapon)
                 .SetAnimation(CastAnimationStyle.Immediate)
                 .AddComponent<AbilityDeliverAttackWithWeaponOnHit>(c => { c.ability_for_fx_self = AbilityRefs.CureLightWounds.Reference.Get(); c.ability_for_fx_target = AbilityRefs.SmiteEvilAbility.Reference.Get(); })
-                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(tyrants_end_buff, ContextDuration.Fixed(1)).Build())
+                .AddAbilityEffectRunAction(ActionsBuilder.New().DealDamage(DamageTypes.Energy(DamageEnergyType.Holy), ContextDice.Value(DiceType.D6, 6)).ApplyBuff(tyrants_end_buff, ContextDuration.Fixed(1)).Build())
                 .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Charisma))
                 .SetType(AbilityType.Extraordinary)
                 .SetIcon(icon).Configure();

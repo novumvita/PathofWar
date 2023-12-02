@@ -1,14 +1,6 @@
-﻿using Kingmaker.Blueprints.Classes.Spells;
-using Kingmaker.PubSubSystem;
-using Kingmaker.RuleSystem.Rules.Abilities;
+﻿using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic;
-using Kingmaker.UnitLogic.Parts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PathofWar.Components.RadiantDawn
 {

@@ -1,0 +1,38 @@
+﻿[
+  {
+    "Key": "PathofWar.Selection.Name",
+    "ProcessTemplates": false,
+    "enGB": "The Art of the Blade"
+  },
+  {
+    "Key": "PathofWar.Selection.Description",
+    "enGB": "Choose a Martial Discipline. The maneuvers in a discipline are usually linked by common effects, philosophies, or functions. Each discipline is tied to a certain skill that might be used in the execution of some of its maneuvers."
+  },
+  {
+    "Key": "PathofWar.Progression.Name",
+    "ProcessTemplates": false,
+    "enGB": "Maneuvers and Stances"
+  },
+  {
+    "Key": "PathofWar.Progression.Description",
+    "enGB": "You may learn new maneuvers and stances as you level up."
+  },
+  {
+    "Key": "PathofWar.Maneuver.Name",
+    "ProcessTemplates": false,
+    "enGB": "Martial Maneuvers"
+  },
+  {
+    "Key": "PathofWar.Maneuver.Description",
+    "enGB": "You may learn a maneuver that you meet the prerequisites for."
+  },
+  {
+    "Key": "PathofWar.Stance.Name",
+    "ProcessTemplates": false,
+    "enGB": "Martial Stances"
+  },
+  {
+    "Key": "PathofWar.Stance.Description",
+    "enGB": "You may learn a stance that you meet the prerequisites for."
+  }
+]

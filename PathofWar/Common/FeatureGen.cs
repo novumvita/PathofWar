@@ -1,12 +1,13 @@
 ﻿using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using Kingmaker.Blueprints.Classes;
+using Kingmaker.Blueprints.Classes.Selection;
 using Kingmaker.Blueprints.Facts;
 
 namespace PathofWar.Common
 {
     internal class FeatureGen
     {
-        internal static BlueprintFeature FeatureFromFact(BlueprintUnitFact fact, BlueprintFeature prereq, bool type, int char_level)
+        internal static BlueprintFeature FeatureFromFact(BlueprintUnitFact fact, BlueprintFeature prereq, BlueprintFeatureSelection selection, int char_level)
         {
             return FeatureConfigurator.New(fact.name + ".Feature", GuidStore.ReserveDynamic())
                 .SetDisplayName(fact.m_DisplayName)
@@ -15,7 +16,7 @@ namespace PathofWar.Common
                 .AddFacts(new() { fact })
                 .AddPrerequisiteFeature(prereq)
                 .AddPrerequisiteCharacterLevel(char_level)
-                .AddToFeatureSelection(type ? MainProgression.maneuver_selection : MainProgression.stance_selection)
+                .AddToFeatureSelection(selection)
                 .Configure();
         }
     }

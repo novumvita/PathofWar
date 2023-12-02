@@ -55,6 +55,11 @@ namespace PathofWar
 
                     Logger.Info("Configuring blueprints.");
 
+                    LocalizationTool.LoadEmbeddedLocalizationPacks(
+                        "PathofWar.Strings.Main.json",
+                        "PathofWar.Strings.RadiantDawn.json",
+                        "PathofWar.Strings.VeiledMoon.json"
+                        );
                     MainProgression.Configure();
 
                 }
