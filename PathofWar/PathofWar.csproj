@@ -72,6 +72,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+	<Reference Include="Pathfinding">
+      <HintPath>$(WrathPath)\Wrath_Data\Managed\AstarPathfindingProject.dll</HintPath>
+	</Reference>
 
     <!-- UMM & Harmony -->
     <Reference Include="0Harmony">

@@ -7,5 +7,23 @@
   {
     "Key": "VeiledMoon.Description",
     "enGB": "As the stillness of the moon reflected upon a still pond, the spiritualist discipline of Veiled Moon is seen as a strange and esoteric art, whose mysteries are difficult to grasp, and even harder to practice! The practitioners of this discipline are said to be half-in, half-out due to the fact that they seem to be living in two worlds; in fact, this is not far from the truth.\nVeiled Moon disciples have grasped connections to the Astral and Ethereal planes in their mind through intense meditation and a spiritual devotion to learning the ways of spirits and the natural world, and blended them seamlessly into a martial art so supernatural that it borders on the magical. A potent, yet passive, discipline, its esoteric abilities are often misunderstood.\nInitiation Modifier: Dexterity"
+  },
+  {
+    "Key": "VeiledMoon.StanceOfTheEtherGate.Name",
+    "ProcessTemplates": false,
+    "enGB": "Stance of the Ether Gate"
+  },
+  {
+    "Key": "VeiledMoon.StanceOfTheEtherGate.Description",
+    "enGB": "By shifting his essence partially into the Astral plane, the disciple finds that moving through that plane as just as easy as moving through the Material plane. While the disciple is in this stance, he may teleport up to his movement speed as a move action, or twice his movement speed as a full-round action, at will. He must see his destination clearly to be able to teleport to it. The initiator may not take any creatures with him when teleporting; only himself and the gear he is carrying."
+  },
+  {
+    "Key": "VeiledMoon.StanceOfTheEtherGate.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Stance of the Ether Gate"
+  },
+  {
+    "Key": "VeiledMoon.StanceOfTheEtherGate.Buff.Description",
+    "enGB": "A stance of the Veiled Moon discipline."
   }
 ]

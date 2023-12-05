@@ -1,7 +1,12 @@
-﻿using BlueprintCore.Blueprints.CustomConfigurators.Classes;
+﻿using BlueprintCore.Blueprints.Configurators.UnitLogic.ActivatableAbilities;
+using BlueprintCore.Blueprints.CustomConfigurators.Classes;
 using BlueprintCore.Blueprints.CustomConfigurators.Classes.Selection;
+using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Blueprints.References;
+using Kingmaker.UnitLogic.ActivatableAbilities;
 using PathofWar.Common;
+using PathofWar.Components.VeiledMoon;
+using PathofWar.Patches;
 
 namespace PathofWar.Disciplines
 {
@@ -18,6 +23,16 @@ namespace PathofWar.Disciplines
 
         private const string VeiledMoonStanceSelectionName = "VeiledMoon.StanceSelection";
         private const string VeiledMoonStanceSelectionGuid = "9D175E4D-43EC-45FE-A3F3-96C362C3AE02";
+
+        private const string StanceOfTheEtherGateName = "VeiledMoon.StanceOfTheEtherGate";
+        private const string StanceOfTheEtherGateGuid = "22F9650A-C4F9-4A8C-832F-B2ED542CBD5E";
+        private const string StanceOfTheEtherGateDisplayName = "VeiledMoon.StanceOfTheEtherGate.Name";
+        private const string StanceOfTheEtherGateDescription = "VeiledMoon.StanceOfTheEtherGate.Description";
+
+        private const string StanceOfTheEtherGateBuffName = "VeiledMoon.StanceOfTheEtherGate.Buff";
+        private const string StanceOfTheEtherGateBuffGuid = "0F7CF970-CAB0-4EB1-8718-3C7B94F0C134";
+        private const string StanceOfTheEtherGateBuffDisplayName = "VeiledMoon.StanceOfTheEtherGate.Buff.Name";
+        private const string StanceOfTheEtherGateBuffDescription = "VeiledMoon.StanceOfTheEtherGate.Buff.Description";
         #endregion
 
         static readonly UnityEngine.Sprite icon = AbilityRefs.ProtectionFromAlignmentCommunal.Reference.Get().Icon;
@@ -44,6 +59,7 @@ namespace PathofWar.Disciplines
             /*MANEUVERS*/
 
             /*STANCES*/
+            var stance_of_the_ether_gate = FeatureGen.FeatureFromFact(StanceOfTheEtherGate(), discipline_feat, stance_selection, 1);
 
             Discipline discipline = new Discipline()
             {
@@ -53,6 +69,23 @@ namespace PathofWar.Disciplines
             };
 
             return discipline;
+        }
+
+        internal static BlueprintActivatableAbility StanceOfTheEtherGate()
+        {
+            var ether_gate_buff = BuffConfigurator.New(StanceOfTheEtherGateBuffName, StanceOfTheEtherGateBuffGuid)
+                .SetDisplayName(StanceOfTheEtherGateBuffDisplayName)
+                .SetDescription(StanceOfTheEtherGateBuffDescription)
+                .AddComponent<EtherGate>()
+                .SetIcon(icon).Configure();
+
+            return ActivatableAbilityConfigurator.New(StanceOfTheEtherGateName, StanceOfTheEtherGateGuid)
+                .SetDisplayName(StanceOfTheEtherGateDisplayName)
+                .SetDescription(StanceOfTheEtherGateDescription)
+                .SetBuff(ether_gate_buff)
+                .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
+                .SetDeactivateImmediately()
+                .SetIcon(icon).Configure();
         }
     }
 }
