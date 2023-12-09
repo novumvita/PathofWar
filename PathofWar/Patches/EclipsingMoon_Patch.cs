@@ -1,6 +1,5 @@
 ﻿using HarmonyLib;
 using Kingmaker.EntitySystem.Entities;
-using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Commands.Base;
 using PathofWar.Components.VeiledMoon;
 using PathofWar.Utilities;

@@ -10,7 +10,6 @@ using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Particles;
 using UnityEngine;
-using static Pathfinding.Util.RetainedGizmos;
 
 namespace PathofWar.Components.VeiledMoon
 {

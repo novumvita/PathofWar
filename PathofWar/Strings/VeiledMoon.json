@@ -126,5 +126,32 @@
   {
     "Key": "VeiledMoon.WarpWorm.Description",
     "enGB": "By creating temporary breaches between the worlds of the Material and the Astral, the disciple may teleport through a few enemies and emerge from the space between worlds having done her foes great internal harm. The initiator teleports to the target, then to the next closest enemy from the first, and then the same for a third target, inflicting 10d6 points of force damage to those affected, halved by a Will save (DC 17 + initiation modifier). After the final target, the disciple teleports 10 ft. behind them to finish her turn."
+  },
+  {
+    "Key": "VeiledMoon.Ghostwalk.Name",
+    "ProcessTemplates": false,
+    "enGB": "Ghostwalk"
+  },
+  {
+    "Key": "VeiledMoon.Ghostwalk.Description",
+    "enGB": "The initiator steps through to the borderland between the Material and the Ethereal planes, becoming an incorporeal figure in both realities for a few moments. Until the beginning of her next turn, the initiator gains the incorporeal subtype."
+  },
+  {
+    "Key": "VeiledMoon.Ghostwalk.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Ghostwalk"
+  },
+  {
+    "Key": "VeiledMoon.Ghostwalk.Buff.Description",
+    "enGB": "Incorporeal."
+  },
+  {
+    "Key": "VeiledMoon.DimensionalStrike.Name",
+    "ProcessTemplates": false,
+    "enGB": "Dimensional Strike"
+  },
+  {
+    "Key": "VeiledMoon.DimensionalStrike.Description",
+    "enGB": "By shifting slightly between two worlds, the disciple confuses the senses of her foe so she may land her attack more easily. The initiator causes her foe to be flat-footed to this attack."
   }
 ]

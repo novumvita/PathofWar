@@ -12,8 +12,8 @@ using BlueprintCore.Utils.Types;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.FactLogic;
 using Kingmaker.Utility;
+using Kingmaker.Visual.Animation.Kingmaker;
 using PathofWar.Common;
 using PathofWar.Components;
 using PathofWar.Components.VeiledMoon;
@@ -86,6 +86,18 @@ namespace PathofWar.Disciplines
         private const string WarpWormName = "VeiledMoon.WarpWorm";
         private const string WarpWormDisplayName = "VeiledMoon.WarpWorm.Name";
         private const string WarpWormDescription = "VeiledMoon.WarpWorm.Description";
+
+        private const string GhostwalkName = "VeiledMoon.Ghostwalk";
+        private const string GhostwalkDisplayName = "VeiledMoon.Ghostwalk.Name";
+        private const string GhostwalkDescription = "VeiledMoon.Ghostwalk.Description";
+
+        private const string GhostwalkBuffName = "VeiledMoon.Ghostwalk.Buff";
+        private const string GhostwalkBuffDisplayName = "VeiledMoon.Ghostwalk.Buff.Name";
+        private const string GhostwalkBuffDescription = "VeiledMoon.Ghostwalk.Buff.Description";
+
+        private const string DimensionalStrikeName = "VeiledMoon.DimensionalStrike";
+        private const string DimensionalStrikeDisplayName = "VeiledMoon.DimensionalStrike.Name";
+        private const string DimensionalStrikeDescription = "VeiledMoon.DimensionalStrike.Description";
         #endregion
 
         static readonly UnityEngine.Sprite icon = AbilityRefs.ProtectionFromAlignmentCommunal.Reference.Get().Icon;
@@ -111,6 +123,8 @@ namespace PathofWar.Disciplines
 
             /*MANEUVERS*/
             var flashing_ether_touch = FeatureGen.FeatureFromFact(FlashingEtherTouch(), discipline_feat, maneuver_selection, 1);
+            var ghostwalk = FeatureGen.FeatureFromFact(Ghostwalk(), discipline_feat, maneuver_selection, 1);
+            var dimensional_strike = FeatureGen.FeatureFromFact(DimensionalStrike(), discipline_feat, maneuver_selection, 1);
             var twisting_ether = FeatureGen.FeatureFromFact(TwistingEther(), discipline_feat, maneuver_selection, 7);
             var fade_through = FeatureGen.FeatureFromFact(FadeThrough(), discipline_feat, maneuver_selection, 7);
             var warp_worm = FeatureGen.FeatureFromFact(WarpWorm(), discipline_feat, maneuver_selection, 10);
@@ -221,6 +235,42 @@ namespace PathofWar.Disciplines
                 .Configure();
 
             return eclipsing_moon_ability;
+        }
+
+        internal static BlueprintAbility Ghostwalk()
+        {
+            var ghostwalk_buff = BuffConfigurator.New(GhostwalkBuffName, GuidStore.ReserveDynamic())
+                .SetDisplayName(GhostwalkBuffDisplayName)
+                .SetDescription(GhostwalkBuffDescription)
+                .AddFacts([FeatureRefs.Incorporeal.Reference.Get()])
+                .SetFxOnStart(BuffRefs.BlinkBuff.Reference.Get().FxOnStart)
+                .SetFxOnRemove(BuffRefs.BlinkBuff.Reference.Get().FxOnRemove)
+                .SetIcon(icon).Configure();
+
+            return AbilityConfigurator.New(GhostwalkName, GuidStore.ReserveDynamic())
+                .SetDisplayName(GhostwalkDisplayName)
+                .SetDescription(GhostwalkDescription)
+                .SetType(AbilityType.Extraordinary)
+                .SetAnimation(CastAnimationStyle.Immediate)
+                .SetRange(AbilityRange.Personal)
+                .SetActionType(UnitCommand.CommandType.Swift)
+                .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
+                .AddAbilityExecuteActionOnCast(ActionsBuilder.New().ApplyBuff(ghostwalk_buff, ContextDuration.Fixed(1)).Build())
+                .SetIcon(icon).Configure();
+        }
+
+        internal static BlueprintAbility DimensionalStrike()
+        {
+            return AbilityConfigurator.New(DimensionalStrikeName, GuidStore.ReserveDynamic())
+                .SetDisplayName(DimensionalStrikeDisplayName)
+                .SetDescription(DimensionalStrikeDescription)
+                .SetType(AbilityType.Extraordinary)
+                .SetRange(AbilityRange.Weapon)
+                .AllowTargeting(enemies: true)
+                .SetActionType(UnitCommand.CommandType.Standard)
+                .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
+                .AddAbilityExecuteActionOnCast(ActionsBuilder.New().ApplyBuffPermanent(BuffRefs.DimensionStrikeBuff.Reference.Get()).MeleeAttack(UnitAnimationType.MainHandAttack).RemoveBuff(BuffRefs.DimensionStrikeBuff.Reference.Get()).Build())
+                .SetIcon(icon).Configure();
         }
 
         internal static BlueprintAbility FlashingEtherTouch()
