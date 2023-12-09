@@ -1,20 +1,14 @@
-﻿using BlueprintCore.Blueprints.References;
-using HarmonyLib;
+﻿using HarmonyLib;
 using JetBrains.Annotations;
 using Kingmaker;
-using Kingmaker.Blueprints;
 using Kingmaker.Controllers.Combat;
-using Kingmaker.Controllers.Projectiles;
 using Kingmaker.EntitySystem.Entities;
-using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.Utility;
 using Kingmaker.View;
-using Kingmaker.Visual.Particles;
 using Pathfinding;
 using PathofWar.Components.VeiledMoon;
 using PathofWar.Utilities;
-using System;
 using System.Linq;
 using TurnBased.Controllers;
 using UnityEngine;
@@ -23,7 +17,6 @@ namespace PathofWar.Patches
 {
     internal class EtherGatePatch
     {
-        private static AbilityCustomTeleportation ability = AbilityRefs.AeonTeleport_Cutscene.Reference.Get().GetComponent<AbilityCustomTeleportation>();
         private static readonly Logging.Logger Logger = Logging.GetLogger("EtherGate");
 
         [HarmonyPatch(typeof(UnitEntityView))]
@@ -38,18 +31,7 @@ namespace PathofWar.Patches
                 {
                     Logger.Log("Ether gate by: " + initiator);
 
-                    FxHelper.SpawnFxOnUnit(ability.DisappearFx.Load(), __instance);
-
-                    var initial_position = initiator.Position;
-
-                    initiator.CombatState.PreventAttacksOfOpporunityNextFrame = true;
-                    initiator.Position = point;
-
-                    Game.Instance.ProjectileController.Launch(initiator, initiator, ProjectileRefs.Mythic4lvlAeon_UncertanityPrinciple00.Reference.Get(), initial_position, delegate (Projectile p)
-                    {
-                    });
-
-                    FxHelper.SpawnFxOnUnit(ability.AppearFx.Load(), __instance);
+                    EtherGateTeleport.TeleportWithFx(initiator, point);
 
                     return false;
                 }
@@ -64,9 +46,12 @@ namespace PathofWar.Patches
             [HarmonyPatch(nameof(UnitMovementAgent.FollowPrecomputedPath)), HarmonyPrefix]
             static bool FollowPrecomputedPath(UnitMovementAgent __instance, Path p, bool forcedPath, float maxApproachRadius = 0f)
             {
-
                 UnitEntityView view = __instance.Unit;
                 UnitEntityData initiator = view.Data;
+
+                if (!initiator.Facts.List.Where(c => c.GetComponent<EtherGate>()).Any())
+                    return true;
+
 
                 var controller = Game.Instance.TurnBasedCombatController.CurrentTurn;
 
@@ -74,7 +59,6 @@ namespace PathofWar.Patches
                 var initial_position = initiator.Position;
                 var distance = Vector3.Distance(initial_position, final_position);
                 var range = controller.GetRemainingMovementRange(initiator, true, false);
-                Logger.Log("Remaining range is: " + range);
 
                 if (Mathf.Approximately(controller.GetCooldown(initiator).MoveAction, 6f) || !controller.HasMovement(initiator))
                 {
@@ -85,35 +69,22 @@ namespace PathofWar.Patches
                 if (distance > range)
                 {
                     Logger.Log("Interpolated destination");
-                    final_position = Vector3.Lerp(initial_position, final_position, range/distance);
+                    final_position = Vector3.Lerp(initial_position, final_position, range / distance);
                     distance = range;
                 }
 
-                if (initiator.Facts.List.Where(c => c.GetComponent<EtherGate>()).Any())
-                {
-                    Logger.Log("Ether gate by: " + initiator);
+                Logger.Log("Ether gate by: " + initiator);
 
+                Logger.Log("Remaining range is: " + range);
 
-                    var component = initiator.Facts.List.Where(c => c.GetComponent<EtherGate>()).Select(c => c.GetComponent<EtherGate>()).First();
-                    component.distance += distance;
+                var component = initiator.Facts.List.Where(c => c.GetComponent<EtherGate>()).Select(c => c.GetComponent<EtherGate>()).First();
+                component.distance += distance;
 
-                    Logger.Log("Distance set to:" + component.distance);
+                Logger.Log("Distance set to:" + component.distance);
 
-                    FxHelper.SpawnFxOnUnit(ability.DisappearFx.Load(), view);
+                EtherGateTeleport.TeleportWithFx(initiator, final_position);
 
-                    initiator.CombatState.PreventAttacksOfOpporunityNextFrame = true;
-                    initiator.Position = final_position;
-
-                    Game.Instance.ProjectileController.Launch(initiator, initiator, ProjectileRefs.Mythic4lvlAeon_UncertanityPrinciple00.Reference.Get(), initial_position, delegate (Projectile projectile)
-                    {
-                    });
-
-                    FxHelper.SpawnFxOnUnit(ability.AppearFx.Load(), view);
-
-                    return false;
-                }
-
-                return true;
+                return false;
             }
         }
 
