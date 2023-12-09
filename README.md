@@ -8,7 +8,7 @@ Counters have been changed into stances, with once per turn limit when necessary
 
 ## [Disciplines](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/disciplines-and-maneuvers/):
   * [Radiant Dawn](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/disciplines-and-maneuvers/alternative-rule-systems-path-of-war-disciplines-and-maneuvers-radiant-dawn-maneuvers) : 7 maneuvers and 8 stances.
-  * [Veiled Moon](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/disciplines-and-maneuvers/Veiled-Moon-maneuvers) : 7 maneuvers and 3 stances
+  * [Veiled Moon](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/disciplines-and-maneuvers/Veiled-Moon-maneuvers) : 7 maneuvers and 4 stances
  
 ## Feedback
 You can reach me (@zedel) on [Discord](https://discord.com/invite/owlcat) in the #mod-user-general channel.
