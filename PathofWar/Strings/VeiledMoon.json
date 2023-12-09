@@ -153,5 +153,23 @@
   {
     "Key": "VeiledMoon.DimensionalStrike.Description",
     "enGB": "By shifting slightly between two worlds, the disciple confuses the senses of her foe so she may land her attack more easily. The initiator causes her foe to be flat-footed to this attack."
+  },
+  {
+    "Key": "VeiledMoon.FormlessDance.Name",
+    "ProcessTemplates": false,
+    "enGB": "Formless Dance"
+  },
+  {
+    "Key": "VeiledMoon.FormlessDance.Description",
+    "enGB": "The Veiled Moon disciple immerses herself in a sort of dimensional flux, causing her to be able to see what cannot be perceived and seemingly be in many places at once. While in this stance, the initiator gains the benefits of a see invisibility spell and the blur spell"
+  },
+  {
+    "Key": "VeiledMoon.FormlessDance.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Formless Dance"
+  },
+  {
+    "Key": "VeiledMoon.FormlessDance.Buff.Description",
+    "enGB": "In dimensional flux."
   }
 ]

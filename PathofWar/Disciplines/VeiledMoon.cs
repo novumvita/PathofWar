@@ -41,6 +41,14 @@ namespace PathofWar.Disciplines
         private const string StanceOfTheEtherGateBuffDisplayName = "VeiledMoon.StanceOfTheEtherGate.Buff.Name";
         private const string StanceOfTheEtherGateBuffDescription = "VeiledMoon.StanceOfTheEtherGate.Buff.Description";
 
+        private const string FormlessDanceName = "VeiledMoon.FormlessDance";
+        private const string FormlessDanceDisplayName = "VeiledMoon.FormlessDance.Name";
+        private const string FormlessDanceDescription = "VeiledMoon.FormlessDance.Description";
+
+        private const string FormlessDanceBuffName = "VeiledMoon.FormlessDance.Buff";
+        private const string FormlessDanceBuffDisplayName = "VeiledMoon.FormlessDance.Buff.Name";
+        private const string FormlessDanceBuffDescription = "VeiledMoon.FormlessDance.Buff.Description";
+
         private const string LunarPenumbraName = "VeiledMoon.LunarPenumbra";
         private const string LunarPenumbraDisplayName = "VeiledMoon.LunarPenumbra.Name";
         private const string LunarPenumbraDescription = "VeiledMoon.LunarPenumbra.Description";
@@ -131,6 +139,7 @@ namespace PathofWar.Disciplines
             var eclipsing_moon = FeatureGen.FeatureFromFact(EclipsingMoon(), discipline_feat, maneuver_selection, 16);
 
             /*STANCES*/
+            var formless_dance = FeatureGen.FeatureFromFact(FormlessDance(), discipline_feat, stance_selection, 4);
             var stance_of_the_ether_gate = FeatureGen.FeatureFromFact(StanceOfTheEtherGate(), discipline_feat, stance_selection, 7);
             var anchoring_spirit = FeatureGen.FeatureFromFact(AnchoringSpirit(), discipline_feat, stance_selection, 13);
             var lunar_penumbra = FeatureGen.FeatureFromFact(LunarPenumbra(), discipline_feat, stance_selection, 16);
@@ -157,6 +166,26 @@ namespace PathofWar.Disciplines
                 .SetDisplayName(StanceOfTheEtherGateDisplayName)
                 .SetDescription(StanceOfTheEtherGateDescription)
                 .SetBuff(ether_gate_buff)
+                .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
+                .SetDeactivateImmediately()
+                .SetIcon(icon).Configure();
+        }
+
+        internal static BlueprintActivatableAbility FormlessDance()
+        {
+            var formless_dance_buff = BuffConfigurator.New(FormlessDanceBuffName, GuidStore.ReserveDynamic())
+                .SetDisplayName(FormlessDanceBuffDisplayName)
+                .SetDescription(FormlessDanceBuffDescription)
+                .AddConcealment(false, false, concealment: Kingmaker.Enums.Concealment.Partial, descriptor: Kingmaker.Enums.ConcealmentDescriptor.Blur)
+                .AddCondition(Kingmaker.UnitLogic.UnitCondition.SeeInvisibility)
+                .SetFxOnStart(BuffRefs.BlurBuff.Reference.Get().FxOnStart)
+                .SetFxOnRemove(BuffRefs.BlurBuff.Reference.Get().FxOnRemove)
+                .SetIcon(icon).Configure();
+
+            return ActivatableAbilityConfigurator.New(FormlessDanceName, GuidStore.ReserveDynamic())
+                .SetDisplayName(FormlessDanceDisplayName)
+                .SetDescription(FormlessDanceDescription)
+                .SetBuff(formless_dance_buff)
                 .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
                 .SetDeactivateImmediately()
                 .SetIcon(icon).Configure();
