@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Kingmaker.EntitySystem.Entities;
+using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Commands.Base;
 using PathofWar.Components.VeiledMoon;
 using PathofWar.Utilities;
@@ -35,7 +36,7 @@ namespace PathofWar.Patches
                 if (fact.distance < distance)
                     return true;
 
-                Vector3 point = __instance.ApproachPoint + (__instance.ApproachPoint - initiator.Position).normalized * __instance.ApproachRadius;
+                Vector3 point = EtherGateTeleport.AdjustTargetPoint(initiator, __instance.TargetUnit, __instance.ApproachPoint);
 
                 Logger.Log("In patch");
 

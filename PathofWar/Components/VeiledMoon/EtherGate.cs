@@ -7,8 +7,10 @@ using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.Utility;
 using Kingmaker.Visual.Particles;
 using UnityEngine;
+using static Pathfinding.Util.RetainedGizmos;
 
 namespace PathofWar.Components.VeiledMoon
 {
@@ -57,6 +59,13 @@ namespace PathofWar.Components.VeiledMoon
             });
 
             FxHelper.SpawnFxOnUnit(ability.AppearFx.Load(), view);
+        }
+
+        public static Vector3 AdjustTargetPoint(UnitEntityData caster, UnitEntityData target, Vector3 point)
+        {
+            float num = caster.View.Corpulence + target.View.Corpulence + GameConsts.MinWeaponRange.Meters;
+            point -= Quaternion.Euler(0f, target.Orientation, 0f) * Vector3.forward * num;
+            return point;
         }
     }
 }
