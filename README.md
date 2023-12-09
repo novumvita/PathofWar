@@ -1,9 +1,9 @@
 # Path of War for Pathfinder: Wrath of the Righteous
 
-An attempt at adding the [Path of War](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/) rule system.
-Only tested for turn-based.
-Liberties have been taken for technical reasons and for ease of implementation, so refer to the in-game descriptions of abilities for accurate information.
-All characters will be able to choose a discipline at level 1 and maneuvers and stances as they level up.
+An attempt at adding the [Path of War](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/) rule system.\
+Only tested for turn-based.\
+Liberties have been taken for technical reasons and for ease of implementation, so refer to the in-game descriptions of abilities for accurate information.\
+All characters will be able to choose a discipline at level 1 and maneuvers and stances as they level up.\
 Counters have been changed into stances, with once per turn limit when necessary for balance.
 
 ## [Disciplines](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/disciplines-and-maneuvers/):
