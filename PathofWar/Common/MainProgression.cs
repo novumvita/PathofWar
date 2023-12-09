@@ -16,34 +16,29 @@ namespace PathofWar.Common
     {
         #region CONST STRINGS
         private const string MainSelectionName = "PathofWar.Selection";
-        private const string MainSelectionGuid = "8A64B550-66D9-4B07-87D0-E04E34333CAB";
         private const string MainSelectionDisplayName = "PathofWar.Selection.Name";
         private const string MainSelectionDescription = "PathofWar.Selection.Description";
 
         private const string MainProgressionName = "PathofWar.Progression";
-        private const string MainProgressionGuid = "61C6A14D-D03C-462A-A6BF-75382A751A42";
         private const string MainProgressionDisplayName = "PathofWar.Progression.Name";
         private const string MainProgressionDescription = "PathofWar.Progression.Description";
 
         private const string ManeuverSelectionName = "PathofWar.Maneuver";
-        private const string ManeuverSelectionGuid = "22413A47-1216-45F4-9980-81A5FBBB6D37";
         private const string ManeuverSelectionDisplayName = "PathofWar.Maneuver.Name";
         private const string ManeuverSelectionDescription = "PathofWar.Maneuver.Description";
 
         private const string StanceSelectionName = "PathofWar.Stance";
-        private const string StanceSelectionGuid = "0653B493-3302-4601-90A2-EB6B3E3E743E";
         private const string StanceSelectionDisplayName = "PathofWar.Stance.Name";
         private const string StanceSelectionDescription = "PathofWar.Stance.Description";
 
         private const string ResourceName = "PathofWar.Resource";
-        private const string ResourceGuid = "C923C566-E04C-4F6A-A973-21AD09DBC726";
         #endregion
 
         public static BlueprintAbilityResource maneuver_count;
 
         internal static void Configure()
         {
-            maneuver_count = AbilityResourceConfigurator.New(ResourceName, ResourceGuid)
+            maneuver_count = AbilityResourceConfigurator.New(ResourceName, GuidStore.ReserveDynamic())
                 .SetMaxAmount(ResourceAmountBuilder.New(0).IncreaseByLevelStartPlusDivStep(otherClassLevelsMultiplier: 1, startingLevel: 1, startingBonus: 2, levelsPerStep: 3, bonusPerStep: 1, minBonus: 0))
                 .Configure();
 
@@ -53,19 +48,19 @@ namespace PathofWar.Common
                 VeiledMoon.Configure(),
             };
 
-            var maneuver_selection_0 = FeatureSelectionConfigurator.New(ManeuverSelectionName, ManeuverSelectionGuid)
+            var maneuver_selection_0 = FeatureSelectionConfigurator.New(ManeuverSelectionName, GuidStore.ReserveDynamic())
                 .SetDisplayName(ManeuverSelectionDisplayName)
                 .SetDescription(ManeuverSelectionDescription)
                 .AddToAllFeatures(FeatureSelectionRefs.BasicFeatSelection.Reference.Get())
                 .SetShowThisSelection(false);
 
-            var stance_selection_0 = FeatureSelectionConfigurator.New(StanceSelectionName, StanceSelectionGuid)
+            var stance_selection_0 = FeatureSelectionConfigurator.New(StanceSelectionName, GuidStore.ReserveDynamic())
                 .SetDisplayName(StanceSelectionDisplayName)
                 .SetDescription(StanceSelectionDescription)
                 .AddToAllFeatures(FeatureSelectionRefs.BasicFeatSelection.Reference.Get())
                 .SetShowThisSelection(false);
 
-            var discipline_selection_0 = FeatureSelectionConfigurator.New(MainSelectionName, MainSelectionGuid)
+            var discipline_selection_0 = FeatureSelectionConfigurator.New(MainSelectionName, GuidStore.ReserveDynamic())
                 .SetDisplayName(MainSelectionDisplayName)
                 .SetDescription(MainSelectionDescription)
                 .AddAbilityResources(resource: maneuver_count, restoreAmount: true)
@@ -91,7 +86,7 @@ namespace PathofWar.Common
                 .AddEntry(16, maneuver_selection)
                 .AddEntry(19, maneuver_selection, stance_selection);
 
-            var discipline_progression = ProgressionConfigurator.New(MainProgressionName, MainProgressionGuid)
+            var discipline_progression = ProgressionConfigurator.New(MainProgressionName, GuidStore.ReserveDynamic())
                 .SetDisplayName(MainProgressionDisplayName)
                 .SetDescription(MainProgressionDescription)
                 .AddToLevelEntries(lb.GetEntries())

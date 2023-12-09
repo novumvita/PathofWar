@@ -10,6 +10,7 @@ namespace PathofWar.Common
     {
         internal static bool IsFeatureImmunityOrResistance(BlueprintFeature feature)
         {
+            #region checkGetComponents
             if (feature.GetComponents<BuffDescriptorImmunity>().Any())
                 return true;
             if (feature.GetComponents<AddPhysicalImmunity>().Any())
@@ -50,6 +51,7 @@ namespace PathofWar.Common
                 return true;
             if (feature.GetComponents<AddDamageResistanceBase>().Any())
                 return true;
+            #endregion
 
             return false;
         }

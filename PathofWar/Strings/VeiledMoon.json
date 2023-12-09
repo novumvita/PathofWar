@@ -15,7 +15,7 @@
   },
   {
     "Key": "VeiledMoon.StanceOfTheEtherGate.Description",
-    "enGB": "By shifting his essence partially into the Astral plane, the disciple finds that moving through that plane as just as easy as moving through the Material plane. While the disciple is in this stance, she may teleport instead of moving, at will. Her normal movement speed still applies. She must see his destination clearly to be able to teleport to it. The initiator may not take any creatures with him when teleporting; only himself and the gear she is carrying."
+    "enGB": "By shifting her essence partially into the Astral plane, the disciple finds that moving through that plane as just as easy as moving through the Material plane. While the disciple is in this stance, she may teleport instead of moving, at will. Her normal movement speed still applies. She must see her destination clearly to be able to teleport to it. The initiator may not take any creatures with her when teleporting; only himself and the gear she is carrying."
   },
   {
     "Key": "VeiledMoon.StanceOfTheEtherGate.Buff.Name",
@@ -33,7 +33,7 @@
   },
   {
     "Key": "VeiledMoon.LunarPenumbra.Description",
-    "enGB": "It is said that the moon is portrayed in some legends as a laughing trickster, and with this powerful ability, the Veiled Moon disciple is capable of pulling an incredible trick upon his foe. The initiator makes a Stealth check against his foe’s Perception check. If successful she and his attacker switch positions, and the attack that was directed against the disciple now affects the attacker, effectively causing the target to strike itself."
+    "enGB": "It is said that the moon is portrayed in some legends as a laughing trickster, and with this powerful ability, the Veiled Moon disciple is capable of pulling an incredible trick upon her foe. When targeted by an ability or spell, the initiator makes a Stealth check against her foe’s Perception check. If successful she and her attacker switch positions, and the ability or spell that was directed against the disciple now affects the attacker, effectively causing the target to strike itself."
   },
   {
     "Key": "VeiledMoon.LunarPenumbra.Buff.Name",
@@ -78,7 +78,7 @@
   },
   {
     "Key": "VeiledMoon.FadeThrough.Description",
-    "enGB": "An advanced technique, the Veiled Moon disciple at this point learns how to fold two points in space around him to appear at another location within the span of a heart beat. The initiator may teleport to a location up to twice his movement speed away as a swift action."
+    "enGB": "An advanced technique, the Veiled Moon disciple at this point learns how to fold two points in space around her to appear at another location within the span of a heart beat. The initiator may teleport to a location up to twice her movement speed away as a swift action."
   },
   {
     "Key": "VeiledMoon.TwistingEther.Name",
@@ -87,7 +87,7 @@
   },
   {
     "Key": "VeiledMoon.TwistingEther.Description",
-    "enGB": "With a nod to his ally, the Veiled Moon adept may sink through the world with his ally and switch places with him for better effect in combat. As a swift action, the initiator may designate a willing ally within 30-ft. and swap places with him via teleportation."
+    "enGB": "With a nod to her ally, the Veiled Moon adept may sink through the world with her ally and switch places with her for better effect in combat. As a swift action, the initiator may designate a willing ally within 30-ft. and swap places with them via teleportation."
   },
   {
     "Key": "VeiledMoon.AnchoringSpirit.Name",
@@ -96,7 +96,7 @@
   },
   {
     "Key": "VeiledMoon.AnchoringSpirit.Description",
-    "enGB": "The Veiled Moon disciple pulls himself fully into the Ethereal and manifests a ghostly apparition of his form upon the Material, and in doing so he locks his immediate area for travel through the Ethereal or Astral plane. While in this stance, the initiator gains the incorporeal subtype and any enemies within 30-ft. of his position who attempt to use an effect with the (teleportation) type fail. Once outside of this stance’s range, creatures are no longer affected. "
+    "enGB": "The Veiled Moon disciple pulls herself fully into the Ethereal and manifests a ghostly apparition of her form upon the Material, and in doing so he locks her immediate area for travel through the Ethereal or Astral plane. While in this stance, the initiator gains the incorporeal subtype and any enemies within 30-ft. of her position who attempt to use an effect with the (teleportation) type fail. Once outside of this stance’s range, creatures are no longer affected. "
   },
   {
     "Key": "VeiledMoon.AnchoringSpirit.Buff.Name",

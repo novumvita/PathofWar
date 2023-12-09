@@ -62,6 +62,8 @@ namespace PathofWar
                         );
                     MainProgression.Configure();
 
+                    Logger.Info("GUIDs reserved: " + (1000 - GuidStore.Guids.Count));
+
                 }
                 catch (Exception e)
                 {

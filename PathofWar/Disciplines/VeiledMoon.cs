@@ -26,96 +26,84 @@ namespace PathofWar.Disciplines
     {
         #region CONSTANTS  
         private const string VeiledMoonProgressionName = "VeiledMoon";
-        private const string VeiledMoonProgressionGuid = "BBC53802-65FA-4802-BEB1-5CE3074E7646";
         private const string VeiledMoonProgressionDisplayName = "VeiledMoon.Name";
         private const string VeiledMoonProgressionDescription = "VeiledMoon.Description";
 
         private const string VeiledMoonManeuverSelectionName = "VeiledMoon.ManeuverSelection";
-        private const string VeiledMoonManeuverSelectionGuid = "D7340657-5C30-4601-9D9B-8E53061D9AF3";
 
         private const string VeiledMoonStanceSelectionName = "VeiledMoon.StanceSelection";
-        private const string VeiledMoonStanceSelectionGuid = "9D175E4D-43EC-45FE-A3F3-96C362C3AE02";
 
         private const string StanceOfTheEtherGateName = "VeiledMoon.StanceOfTheEtherGate";
-        private const string StanceOfTheEtherGateGuid = "22F9650A-C4F9-4A8C-832F-B2ED542CBD5E";
         private const string StanceOfTheEtherGateDisplayName = "VeiledMoon.StanceOfTheEtherGate.Name";
         private const string StanceOfTheEtherGateDescription = "VeiledMoon.StanceOfTheEtherGate.Description";
 
         private const string StanceOfTheEtherGateBuffName = "VeiledMoon.StanceOfTheEtherGate.Buff";
-        private const string StanceOfTheEtherGateBuffGuid = "0F7CF970-CAB0-4EB1-8718-3C7B94F0C134";
         private const string StanceOfTheEtherGateBuffDisplayName = "VeiledMoon.StanceOfTheEtherGate.Buff.Name";
         private const string StanceOfTheEtherGateBuffDescription = "VeiledMoon.StanceOfTheEtherGate.Buff.Description";
 
         private const string LunarPenumbraName = "VeiledMoon.LunarPenumbra";
-        private const string LunarPenumbraGuid = "B03E2F0C-6499-48D2-A86B-2FA73E5FB18E";
         private const string LunarPenumbraDisplayName = "VeiledMoon.LunarPenumbra.Name";
         private const string LunarPenumbraDescription = "VeiledMoon.LunarPenumbra.Description";
 
         private const string LunarPenumbraBuffName = "VeiledMoon.LunarPenumbra.Buff";
-        private const string LunarPenumbraBuffGuid = "04E8480D-480C-4959-A798-7BF1D6C3EF27";
         private const string LunarPenumbraBuffDisplayName = "VeiledMoon.LunarPenumbra.Buff.Name";
         private const string LunarPenumbraBuffDescription = "VeiledMoon.LunarPenumbra.Buff.Description";
 
         private const string EclipsingMoonName = "VeiledMoon.EclipsingMoon";
-        private const string EclipsingMoonGuid = "F2D14B08-F979-44D0-A0F5-CC703F5CB874";
         private const string EclipsingMoonDisplayName = "VeiledMoon.EclipsingMoon.Name";
         private const string EclipsingMoonDescription = "VeiledMoon.EclipsingMoon.Description";
 
         private const string EclipsingMoonBuffName = "VeiledMoon.EclipsingMoon.Buff";
-        private const string EclipsingMoonBuffGuid = "FCC597BC-3C50-4593-8BB2-8254520120CB";
         private const string EclipsingMoonBuffDisplayName = "VeiledMoon.EclipsingMoon.Buff.Name";
         private const string EclipsingMoonBuffDescription = "VeiledMoon.EclipsingMoon.Buff.Description";
 
         private const string FlashingEtherTouchName = "VeiledMoon.FlashingEtherTouch";
-        private const string FlashingEtherTouchGuid = "5B9EE7EC-63A0-4E7D-9EAB-C87DFE2BBE35";
         private const string FlashingEtherTouchDisplayName = "VeiledMoon.FlashingEtherTouch.Name";
         private const string FlashingEtherTouchDescription = "VeiledMoon.FlashingEtherTouch.Description";
 
         private const string FadeThroughName = "VeiledMoon.FadeThrough";
-        private const string FadeThroughGuid = "9C232BDF-2CA9-4274-AAA1-6BD531159F93";
         private const string FadeThroughDisplayName = "VeiledMoon.FadeThrough.Name";
         private const string FadeThroughDescription = "VeiledMoon.FadeThrough.Description";
 
         private const string TwistingEtherName = "VeiledMoon.TwistingEther";
-        private const string TwistingEtherGuid = "D94CD772-B4DD-4BFB-9DEF-44385835F148";
         private const string TwistingEtherDisplayName = "VeiledMoon.TwistingEther.Name";
         private const string TwistingEtherDescription = "VeiledMoon.TwistingEther.Description";
 
         private const string AnchoringSpiritName = "VeiledMoon.AnchoringSpirit";
-        private const string AnchoringSpiritGuid = "FA07E4EB-31D8-4C30-BF7A-857DB3C0FEF8";
         private const string AnchoringSpiritDisplayName = "VeiledMoon.AnchoringSpirit.Name";
         private const string AnchoringSpiritDescription = "VeiledMoon.AnchoringSpirit.Description";
 
         private const string AnchoringSpiritBuffName = "VeiledMoon.AnchoringSpirit.Buff";
-        private const string AnchoringSpiritBuffGuid = "1943CE8C-0DC3-4796-9255-C181A3189803";
         private const string AnchoringSpiritBuffDisplayName = "VeiledMoon.AnchoringSpirit.Buff.Name";
         private const string AnchoringSpiritBuffDescription = "VeiledMoon.AnchoringSpirit.Buff.Description";
 
         private const string AnchoringSpiritAreaEffectName = "VeiledMoon.AnchoringSpirit.AreaEffect";
-        private const string AnchoringSpiritAreaEffectGuid = "6590E4C0-DF62-489A-823C-14EB91FAD906";
 
         private const string AnchoringSpiritBuffEffectName = "VeiledMoon.AnchoringSpirit.BuffEffect";
-        private const string AnchoringSpiritBuffEffectGuid = "1141C4E0-DDF6-48E7-B47A-22EA01BE9B84";
         private const string AnchoringSpiritBuffEffectDisplayName = "VeiledMoon.AnchoringSpirit.BuffEffect.Name";
         private const string AnchoringSpiritBuffEffectDescription = "VeiledMoon.AnchoringSpirit.BuffEffect.Description";
+
+        private const string WarpWormName = "VeiledMoon.WarpWorm";
+        private const string WarpWormDisplayName = "VeiledMoon.WarpWorm.Name";
+        private const string WarpWormDescription = "VeiledMoon.WarpWorm.Description";
         #endregion
 
         static readonly UnityEngine.Sprite icon = AbilityRefs.ProtectionFromAlignmentCommunal.Reference.Get().Icon;
 
         internal static Discipline Configure()
         {
-            var discipline_feat = FeatureConfigurator.New(VeiledMoonProgressionName, VeiledMoonProgressionGuid)
+            var discipline_feat = FeatureConfigurator.New(VeiledMoonProgressionName, GuidStore.ReserveDynamic())
                 .SetDisplayName(VeiledMoonProgressionDisplayName)
                 .SetDescription(VeiledMoonProgressionDescription)
                 .SetIcon(icon).Configure();
 
-            var maneuver_selection = FeatureSelectionConfigurator.New(VeiledMoonManeuverSelectionName, VeiledMoonManeuverSelectionGuid)
+            var maneuver_selection = FeatureSelectionConfigurator.New(VeiledMoonManeuverSelectionName, GuidStore.ReserveDynamic())
                 .SetDisplayName(VeiledMoonProgressionDisplayName)
                 .SetDescription(VeiledMoonProgressionDescription)
                 .SetIcon(icon)
                 .Configure();
 
-            var stance_selection = FeatureSelectionConfigurator.New(VeiledMoonStanceSelectionName, VeiledMoonStanceSelectionGuid)
+            var stance_selection = FeatureSelectionConfigurator.New(VeiledMoonStanceSelectionName, GuidStore.ReserveDynamic())
                 .SetDisplayName(VeiledMoonProgressionDisplayName)
                 .SetDescription(VeiledMoonProgressionDescription)
                 .SetIcon(icon)
@@ -144,13 +132,13 @@ namespace PathofWar.Disciplines
 
         internal static BlueprintActivatableAbility StanceOfTheEtherGate()
         {
-            var ether_gate_buff = BuffConfigurator.New(StanceOfTheEtherGateBuffName, StanceOfTheEtherGateBuffGuid)
+            var ether_gate_buff = BuffConfigurator.New(StanceOfTheEtherGateBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(StanceOfTheEtherGateBuffDisplayName)
                 .SetDescription(StanceOfTheEtherGateBuffDescription)
                 .AddComponent<EtherGate>()
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(StanceOfTheEtherGateName, StanceOfTheEtherGateGuid)
+            return ActivatableAbilityConfigurator.New(StanceOfTheEtherGateName, GuidStore.ReserveDynamic())
                 .SetDisplayName(StanceOfTheEtherGateDisplayName)
                 .SetDescription(StanceOfTheEtherGateDescription)
                 .SetBuff(ether_gate_buff)
@@ -161,19 +149,19 @@ namespace PathofWar.Disciplines
 
         internal static BlueprintActivatableAbility AnchoringSpirit()
         {
-            var anchoring_spirit_area_buff = BuffConfigurator.New(AnchoringSpiritBuffEffectName, AnchoringSpiritBuffEffectGuid)
+            var anchoring_spirit_area_buff = BuffConfigurator.New(AnchoringSpiritBuffEffectName, GuidStore.ReserveDynamic())
                 .SetDisplayName(AnchoringSpiritBuffEffectDisplayName)
                 .SetDescription(AnchoringSpiritBuffEffectDescription)
                 .CopyFrom(BuffRefs.DimensionalAnchorBuff, [typeof(ForbidSpecificSpellsCast)])
                 .SetIcon(icon).Configure();
 
-            var anchoring_spirit_area_effect = AbilityAreaEffectConfigurator.New(AnchoringSpiritAreaEffectName, AnchoringSpiritAreaEffectGuid)
+            var anchoring_spirit_area_effect = AbilityAreaEffectConfigurator.New(AnchoringSpiritAreaEffectName, GuidStore.ReserveDynamic())
                 .SetShape(AreaEffectShape.Cylinder)
                 .SetSize(30.Feet())
                 .AddAbilityAreaEffectBuff(anchoring_spirit_area_buff, condition: ConditionsBuilder.New().IsEnemy().Build())
                 .Configure();
 
-            var anchoring_spirit_buff = BuffConfigurator.New(AnchoringSpiritBuffName, AnchoringSpiritBuffGuid)
+            var anchoring_spirit_buff = BuffConfigurator.New(AnchoringSpiritBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(AnchoringSpiritBuffDisplayName)
                 .SetDescription(AnchoringSpiritBuffDescription)
                 .AddAreaEffect(anchoring_spirit_area_effect)
@@ -182,7 +170,7 @@ namespace PathofWar.Disciplines
                 .SetFxOnRemove(BuffRefs.BlinkBuff.Reference.Get().FxOnRemove)
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(AnchoringSpiritName, AnchoringSpiritGuid)
+            return ActivatableAbilityConfigurator.New(AnchoringSpiritName, GuidStore.ReserveDynamic())
                 .SetDisplayName(AnchoringSpiritDisplayName)
                 .SetDescription(AnchoringSpiritDescription)
                 .SetBuff(anchoring_spirit_buff)
@@ -193,14 +181,14 @@ namespace PathofWar.Disciplines
 
         internal static BlueprintActivatableAbility LunarPenumbra()
         {
-            var lunar_penumbra_buff = BuffConfigurator.New(LunarPenumbraBuffName, LunarPenumbraBuffGuid)
+            var lunar_penumbra_buff = BuffConfigurator.New(LunarPenumbraBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(LunarPenumbraBuffDisplayName)
                 .SetDescription(LunarPenumbraBuffDescription)
                 .AddComponent<LunarPenumbra>()
                 .AddComponent<AddAbilityResourceDepletedTrigger>(c => { c.Resource = MainProgression.maneuver_count; c.Action = ActionsBuilder.New().RemoveSelf().Build(); c.Cost = 1; })
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(LunarPenumbraName, LunarPenumbraGuid)
+            return ActivatableAbilityConfigurator.New(LunarPenumbraName, GuidStore.ReserveDynamic())
                 .SetDisplayName(LunarPenumbraDisplayName)
                 .SetDescription(LunarPenumbraDescription)
                 .SetBuff(lunar_penumbra_buff)
@@ -211,12 +199,12 @@ namespace PathofWar.Disciplines
 
         internal static BlueprintAbility EclipsingMoon()
         {
-            var eclipsing_moon_buff = BuffConfigurator.New(EclipsingMoonBuffName, EclipsingMoonBuffGuid)
+            var eclipsing_moon_buff = BuffConfigurator.New(EclipsingMoonBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(EclipsingMoonBuffDisplayName)
                 .SetDescription(EclipsingMoonBuffDescription)
                 .SetIcon(icon).Configure();
 
-            var eclipsing_moon_ability = AbilityConfigurator.New(EclipsingMoonName, EclipsingMoonGuid)
+            var eclipsing_moon_ability = AbilityConfigurator.New(EclipsingMoonName, GuidStore.ReserveDynamic())
                 .SetDisplayName(EclipsingMoonDisplayName)
                 .SetDescription(EclipsingMoonDescription)
                 .SetIsFullRoundAction()
@@ -236,7 +224,7 @@ namespace PathofWar.Disciplines
 
         internal static BlueprintAbility FlashingEtherTouch()
         {
-            return AbilityConfigurator.New(FlashingEtherTouchName, FlashingEtherTouchGuid)
+            return AbilityConfigurator.New(FlashingEtherTouchName, GuidStore.ReserveDynamic())
                 .SetDisplayName(FlashingEtherTouchDisplayName)
                 .SetDescription(FlashingEtherTouchDescription)
                 .SetType(AbilityType.Extraordinary)
@@ -251,7 +239,7 @@ namespace PathofWar.Disciplines
 
         internal static BlueprintAbility FadeThrough()
         {
-            return AbilityConfigurator.New(FadeThroughName, FadeThroughGuid)
+            return AbilityConfigurator.New(FadeThroughName, GuidStore.ReserveDynamic())
                 .SetDisplayName(FadeThroughDisplayName)
                 .SetDescription(FadeThroughDescription)
                 .SetType(AbilityType.Extraordinary)
@@ -266,7 +254,7 @@ namespace PathofWar.Disciplines
 
         internal static BlueprintAbility TwistingEther()
         {
-            return AbilityConfigurator.New(TwistingEtherName, TwistingEtherGuid)
+            return AbilityConfigurator.New(TwistingEtherName, GuidStore.ReserveDynamic())
                 .SetDisplayName(TwistingEtherDisplayName)
                 .SetDescription(TwistingEtherDescription)
                 .SetType(AbilityType.Extraordinary)
@@ -276,6 +264,21 @@ namespace PathofWar.Disciplines
                 .AllowTargeting(friends: true)
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
                 .AddAbilityEffectRunAction(ActionsBuilder.New().Add<TwistingEther>().Build())
+                .SetIcon(icon).Configure();
+        }
+
+        internal static BlueprintAbility WarpWorm()
+        {
+            return AbilityConfigurator.New(WarpWormName, GuidStore.ReserveDynamic())
+                .SetDisplayName(WarpWormDisplayName)
+                .SetDescription(WarpWormDescription)
+                .SetType(AbilityType.Extraordinary)
+                .SetRange(AbilityRange.Touch)
+                .SetActionType(UnitCommand.CommandType.Standard)
+                .AllowTargeting(enemies: true)
+                .SetAnimation(CastAnimationStyle.Touch)
+                .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
+                .AddAbilityEffectRunAction(ActionsBuilder.New().Add<WarpWorm>().Build())
                 .SetIcon(icon).Configure();
         }
     }

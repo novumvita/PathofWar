@@ -36,38 +36,30 @@ namespace BasicTemplate.Disciplines
     {
         #region CONSTANTS  
         private const string RadiantDawnProgressionName = "RadiantDawn";
-        private const string RadiantDawnProgressionGuid = "ABA5785C-977C-42E7-A13F-57E90159471F";
         private const string RadiantDawnProgressionDisplayName = "RadiantDawn.Name";
         private const string RadiantDawnProgressionDescription = "RadiantDawn.Description";
 
         private const string RadiantDawnManeuverSelectionName = "RadiantDawn.ManeuverSelection";
-        private const string RadiantDawnManeuverSelectionGuid = "4A32371B-DC1C-463F-901A-5F0C66BA17E2";
 
         private const string RadiantDawnStanceSelectionName = "RadiantDawn.StanceSelection";
-        private const string RadiantDawnStanceSelectionGuid = "8DF93188-5C8A-46F1-BBEA-749BE4514465";
 
         private const string RadiantDawnStanceDescription = "RadiantDawn.Stance.Description";
 
         private const string BolsterName = "RadiantDawn.Bolster";
-        private const string BolsterGuid = "BCB5D2FA-34FA-409E-A646-5D43AD39909F";
         private const string BolsterDisplayName = "RadiantDawn.Bolster.Name";
         private const string BolsterDescription = "RadiantDawn.Bolster.Description";
 
         private const string BolsterBuffName = "RadiantDawn.Bolster.Buff";
-        private const string BolsterBuffGuid = "695A6EB3-847E-4AFF-838A-EEE05C17C3B1";
         private const string BolsterBuffDisplayName = "RadiantDawn.Bolster.Buff.Name";
         private const string BolsterBuffDescription = "RadiantDawn.Bolster.Buff.Description";
 
         private const string BolsterAreaEffectName = "RadiantDawn.Bolster.AreaEffect";
-        private const string BolsterAreaEffectGuid = "74A71C7E-6902-4E83-BA9A-87B33EABBE3A";
 
         private const string BolsterBaseBuffName = "RadiantDawn.Bolster.BaseBuff";
-        private const string BolsterBaseBuffGuid = "F084D0AF-0302-45FA-970E-54479F61FC48";
         private const string BolsterBaseBuffDisplayName = "RadiantDawn.Bolster.BaseBuff.Name";
         private const string BolsterBaseBuffDescription = "RadiantDawn.Bolster.BaseBuff.Description";
 
         private const string DecreeOfMercyName = "RadiantDawn.DecreeOfMercy";
-        private const string DecreeOfMercyGuid = "44B2B138-2B83-4AD3-9F51-874D0BBD1D7F";
         private const string DecreeOfMercyDisplayName = "RadiantDawn.DecreeOfMercy.Name";
         private const string DecreeOfMercyDescription = "RadiantDawn.DecreeOfMercy.Description";
 
@@ -75,138 +67,110 @@ namespace BasicTemplate.Disciplines
         private const string DecreeOfMercyAreaEffectGuid = "EB7384B4-AE1A-4A51-93AE-9BC247A47D08";
 
         private const string DecreeOfMercyBaseBuffName = "RadiantDawn.DecreeOfMercy.BaseBuff";
-        private const string DecreeOfMercyBaseBuffGuid = "264D4B18-9C79-4A72-BB07-F1FB0F8C4091";
         private const string DecreeOfMercyBaseBuffDisplayName = "RadiantDawn.DecreeOfMercy.BaseBuff.Name";
         private const string DecreeOfMercyBaseBuffDescription = "RadiantDawn.DecreeOfMercy.BaseBuff.Description";
 
         private const string DecreeOfMercyBuffName = "RadiantDawn.DecreeOfMercy.Buff";
-        private const string DecreeOfMercyBuffGuid = "54891945-A174-43F8-AA79-426B95A62FAF";
         private const string DecreeOfMercyBuffDisplayName = "RadiantDawn.DecreeOfMercy.Buff.Name";
         private const string DecreeOfMercyBuffDescription = "RadiantDawn.DecreeOfMercy.Buff.Description";
 
         private const string DismissName = "RadiantDawn.Dismiss";
-        private const string DismissGuid = "CC39C51A-B7B0-4E6E-9F90-9101EF17A22F";
         private const string DismissDisplayName = "RadiantDawn.Dismiss.Name";
         private const string DismissDescription = "RadiantDawn.Dismiss.Description";
 
         private const string LifeburstStrikeName = "RadiantDawn.LifeburstStrike";
-        private const string LifeburstStrikeGuid = "8BB8B201-7339-4B09-9FAE-7EA4F4941FC7";
         private const string LifeburstStrikeDisplayName = "RadiantDawn.LifeburstStrike.Name";
         private const string LifeburstStrikeDescription = "RadiantDawn.LifeburstStrike.Description";
 
         private const string DecreeOfDeathName = "RadiantDawn.DecreeOfDeath";
-        private const string DecreeOfDeathGuid = "0C349A0E-890E-458C-ACEE-1BE7D68C30FA";
         private const string DecreeOfDeathDisplayName = "RadiantDawn.DecreeOfDeath.Name";
         private const string DecreeOfDeathDescription = "RadiantDawn.DecreeOfDeath.Description";
 
         private const string DecreeOfDeathBuffName = "RadiantDawn.DecreeOfDeath.Buff";
-        private const string DecreeOfDeathBuffGuid = "433BC57F-0A31-473F-8318-F96EA2524BD1";
         private const string DecreeOfDeathBuffDisplayName = "RadiantDawn.DecreeOfDeath.Buff.Name";
         private const string DecreeOfDeathBuffDescription = "RadiantDawn.DecreeOfDeath.Buff.Description";
 
         private const string TyrantsEndName = "RadiantDawn.TyrantsEnd";
-        private const string TyrantsEndGuid = "6FFA1BCF-5DA2-4135-8D7A-CDA5C05E7EED";
         private const string TyrantsEndDisplayName = "RadiantDawn.TyrantsEnd.Name";
         private const string TyrantsEndDescription = "RadiantDawn.TyrantsEnd.Description";
 
         private const string TyrantsEndBuffName = "RadiantDawn.TyrantsEnd.Buff";
-        private const string TyrantsEndBuffGuid = "45B194A9-343E-4361-9BD3-29DF6C6E1586";
         private const string TyrantsEndBuffDisplayName = "RadiantDawn.TyrantsEnd.Buff.Name";
         private const string TyrantsEndBuffDescription = "RadiantDawn.TyrantsEnd.Buff.Description";
 
         private const string ShatterSpellName = "RadiantDawn.ShatterSpell";
-        private const string ShatterSpellGuid = "B463AAAB-781D-4CAF-A812-C72EA041E809";
         private const string ShatterSpellDisplayName = "RadiantDawn.ShatterSpell.Name";
         private const string ShatterSpellDescription = "RadiantDawn.ShatterSpell.Description";
 
         private const string DecreeOfPurityName = "RadiantDawn.DecreeOfPurity";
-        private const string DecreeOfPurityGuid = "7DD4226C-90C4-4B80-9385-ACC83792F5F5";
         private const string DecreeOfPurityDisplayName = "RadiantDawn.DecreeOfPurity.Name";
         private const string DecreeOfPurityDescription = "RadiantDawn.DecreeOfPurity.Description";
 
         private const string JudgementDayName = "RadiantDawn.JudgementDay";
-        private const string JudgementDayGuid = "B309DF44-0E88-4D4B-9FED-199B9DFD43C8";
         private const string JudgementDayDisplayName = "RadiantDawn.JudgementDay.Name";
         private const string JudgementDayDescription = "RadiantDawn.JudgementDay.Description";
 
         private const string PushTheAdvantageName = "RadiantDawn.PushTheAdvantage";
-        private const string PushTheAdvantageGuid = "A6CC09D4-7B03-4253-B8DB-64835C369603";
         private const string PushTheAdvantageDisplayName = "RadiantDawn.PushTheAdvantage.Name";
         private const string PushTheAdvantageDescription = "RadiantDawn.PushTheAdvantage.Description";
 
         private const string PushTheAdvantageBuffName = "RadiantDawn.PushTheAdvantage.Buff";
-        private const string PushTheAdvantageBuffGuid = "DDC1E618-D62A-4CBC-AE6B-9656C965F9BF";
         private const string PushTheAdvantageBuffDisplayName = "RadiantDawn.PushTheAdvantage.Buff.Name";
         private const string PushTheAdvantageBuffDescription = "RadiantDawn.PushTheAdvantage.Buff.Description";
 
         private const string NoblesseObligeName = "RadiantDawn.NoblesseOblige";
-        private const string NoblesseObligeGuid = "495D1CB5-1E55-4F47-A68B-1C9D17C0EB9F";
         private const string NoblesseObligeDisplayName = "RadiantDawn.NoblesseOblige.Name";
         private const string NoblesseObligeDescription = "RadiantDawn.NoblesseOblige.Description";
 
         private const string NoblesseObligeBuffName = "RadiantDawn.NoblesseOblige.Buff";
-        private const string NoblesseObligeBuffGuid = "EF9B3E3D-64E4-471D-8CDD-08E5AD792892";
         private const string NoblesseObligeBuffDisplayName = "RadiantDawn.NoblesseOblige.Buff.Name";
         private const string NoblesseObligeBuffDescription = "RadiantDawn.NoblesseOblige.Buff.Description";
 
         private const string SpoilsOfWarName = "RadiantDawn.SpoilsOfWar";
-        private const string SpoilsOfWarGuid = "0EF8ED97-4E3F-4AF8-802D-709CBF296376";
         private const string SpoilsOfWarDisplayName = "RadiantDawn.SpoilsOfWar.Name";
         private const string SpoilsOfWarDescription = "RadiantDawn.SpoilsOfWar.Description";
 
         private const string SpoilsOfWarBuffName = "RadiantDawn.SpoilsOfWar.Buff";
-        private const string SpoilsOfWarBuffGuid = "75D3FD9A-8FCF-4272-8984-25A6EC43DA04";
         private const string SpoilsOfWarBuffDisplayName = "RadiantDawn.SpoilsOfWar.Buff.Name";
         private const string SpoilsOfWarBuffDescription = "RadiantDawn.SpoilsOfWar.Buff.Description";
 
         private const string SpoilsOfWarAreaEffectName = "RadiantDawn.SpoilsOfWar.AreaEffect";
-        private const string SpoilsOfWarAreaEffectGuid = "61E59355-CD5B-4B64-8FEB-AB131B7F25F3";
 
         private const string SpoilsOfWarBuffEffectName = "RadiantDawn.SpoilsOfWar.BuffEffect";
-        private const string SpoilsOfWarBuffEffectGuid = "1BE21C8F-9C8B-42F9-9107-CF7DFD6A9539";
         private const string SpoilsOfWarBuffEffectDisplayName = "RadiantDawn.SpoilsOfWar.BuffEffect.Name";
         private const string SpoilsOfWarBuffEffectDescription = "RadiantDawn.SpoilsOfWar.BuffEffect.Description";
 
         private const string ArmamentsOfTheEmpireName = "RadiantDawn.ArmamentsOfTheEmpire";
-        private const string ArmamentsOfTheEmpireGuid = "DB5349DB-966B-45D0-AAE1-7D4AB944E9AB";
         private const string ArmamentsOfTheEmpireDisplayName = "RadiantDawn.ArmamentsOfTheEmpire.Name";
         private const string ArmamentsOfTheEmpireDescription = "RadiantDawn.ArmamentsOfTheEmpire.Description";
 
         private const string ArmamentsOfTheEmpireBuffName = "RadiantDawn.ArmamentsOfTheEmpire.Buff";
-        private const string ArmamentsOfTheEmpireBuffGuid = "455DF34D-8498-419B-824D-E33CB6D8E300";
         private const string ArmamentsOfTheEmpireBuffDisplayName = "RadiantDawn.ArmamentsOfTheEmpire.Buff.Name";
         private const string ArmamentsOfTheEmpireBuffDescription = "RadiantDawn.ArmamentsOfTheEmpire.Buff.Description";
 
         private const string ArmamentsOfTheEmpireAreaEffectName = "RadiantDawn.ArmamentsOfTheEmpire.AreaEffect";
-        private const string ArmamentsOfTheEmpireAreaEffectGuid = "ACBEDDAB-89B9-4E09-8855-03D45EDB0E34";
 
         private const string ArmamentsOfTheEmpireBuffEffectName = "RadiantDawn.ArmamentsOfTheEmpire.BuffEffect";
-        private const string ArmamentsOfTheEmpireBuffEffectGuid = "1162309E-EFA6-4300-987E-F2875BC55395";
         private const string ArmamentsOfTheEmpireBuffEffectDisplayName = "RadiantDawn.ArmamentsOfTheEmpire.BuffEffect.Name";
         private const string ArmamentsOfTheEmpireBuffEffectDescription = "RadiantDawn.ArmamentsOfTheEmpire.BuffEffect.Description";
 
         private const string TheCagedSunName = "RadiantDawn.TheCagedSun";
-        private const string TheCagedSunGuid = "9E126087-4FF1-4CC7-A18D-C382CE10837E";
         private const string TheCagedSunDisplayName = "RadiantDawn.TheCagedSun.Name";
         private const string TheCagedSunDescription = "RadiantDawn.TheCagedSun.Description";
 
         private const string TheCagedSunBuffName = "RadiantDawn.TheCagedSun.Buff";
-        private const string TheCagedSunBuffGuid = "52977995-64E2-4479-89CB-0C9D1C57D57C";
         private const string TheCagedSunBuffDisplayName = "RadiantDawn.TheCagedSun.Buff.Name";
         private const string TheCagedSunBuffDescription = "RadiantDawn.TheCagedSun.Buff.Description";
 
         private const string TheCagedSunHPBuffName = "RadiantDawn.TheCagedSun.HPBuff";
-        private const string TheCagedSunHPBuffGuid = "4B8B4E85-8CC8-4583-B426-9A1D5B3F011D";
         private const string TheCagedSunHPBuffDisplayName = "RadiantDawn.TheCagedSun.HPBuff.Name";
         private const string TheCagedSunHPBuffDescription = "RadiantDawn.TheCagedSun.HPBuff.Description";
 
         private const string BattleAgainstTheSunName = "RadiantDawn.BattleAgainstTheSun";
-        private const string BattleAgainstTheSunGuid = "D1A50532-1A12-45B8-86B7-9B6A4A495C93";
         private const string BattleAgainstTheSunDisplayName = "RadiantDawn.BattleAgainstTheSun.Name";
         private const string BattleAgainstTheSunDescription = "RadiantDawn.BattleAgainstTheSun.Description";
 
         private const string BattleAgainstTheSunBuffName = "RadiantDawn.BattleAgainstTheSun.Buff";
-        private const string BattleAgainstTheSunBuffGuid = "83B0726D-F4F6-4FDC-A182-EB01AA1708E6";
         private const string BattleAgainstTheSunBuffDisplayName = "RadiantDawn.BattleAgainstTheSun.Buff.Name";
         private const string BattleAgainstTheSunBuffDescription = "RadiantDawn.BattleAgainstTheSun.Buff.Description";
         #endregion
@@ -215,18 +179,18 @@ namespace BasicTemplate.Disciplines
 
         internal static Discipline Configure()
         {
-            var discipline_feat = FeatureConfigurator.New(RadiantDawnProgressionName, RadiantDawnProgressionGuid)
+            var discipline_feat = FeatureConfigurator.New(RadiantDawnProgressionName, GuidStore.ReserveDynamic())
                 .SetDisplayName(RadiantDawnProgressionDisplayName)
                 .SetDescription(RadiantDawnProgressionDescription)
                 .SetIcon(icon).Configure();
 
-            var maneuver_selection = FeatureSelectionConfigurator.New(RadiantDawnManeuverSelectionName, RadiantDawnManeuverSelectionGuid)
+            var maneuver_selection = FeatureSelectionConfigurator.New(RadiantDawnManeuverSelectionName, GuidStore.ReserveDynamic())
                 .SetDisplayName(RadiantDawnProgressionDisplayName)
                 .SetDescription(RadiantDawnProgressionDescription)
                 .SetIcon(icon)
                 .Configure();
 
-            var stance_selection = FeatureSelectionConfigurator.New(RadiantDawnStanceSelectionName, RadiantDawnStanceSelectionGuid)
+            var stance_selection = FeatureSelectionConfigurator.New(RadiantDawnStanceSelectionName, GuidStore.ReserveDynamic())
                 .SetDisplayName(RadiantDawnProgressionDisplayName)
                 .SetDescription(RadiantDawnProgressionDescription)
                 .SetIcon(icon)
@@ -263,7 +227,7 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintActivatableAbility Bolster()
         {
-            var bolster_effect_buff = BuffConfigurator.New(BolsterBuffName, BolsterBuffGuid)
+            var bolster_effect_buff = BuffConfigurator.New(BolsterBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(BolsterBuffDisplayName)
                 .SetDescription(BolsterBuffDescription)
                 .AddDamageResistancePhysical(value: ContextValues.Rank())
@@ -271,19 +235,19 @@ namespace BasicTemplate.Disciplines
                 .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Charisma))
                 .SetIcon(icon).Configure();
 
-            var bolster_area_effect = AbilityAreaEffectConfigurator.New(BolsterAreaEffectName, BolsterAreaEffectGuid)
+            var bolster_area_effect = AbilityAreaEffectConfigurator.New(BolsterAreaEffectName, GuidStore.ReserveDynamic())
                 .SetShape(AreaEffectShape.Cylinder)
                 .SetSize(30.Feet())
                 .AddAbilityAreaEffectBuff(bolster_effect_buff, condition: ConditionsBuilder.New().IsAlly().TargetIsYourself(negate: true).Build())
                 .Configure();
 
-            var bolster_buff = BuffConfigurator.New(BolsterBaseBuffName, BolsterBaseBuffGuid)
+            var bolster_buff = BuffConfigurator.New(BolsterBaseBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(BolsterBaseBuffDisplayName)
                 .SetDescription(BolsterBaseBuffDescription)
                 .AddAreaEffect(bolster_area_effect)
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(BolsterName, BolsterGuid)
+            return ActivatableAbilityConfigurator.New(BolsterName, GuidStore.ReserveDynamic())
                 .SetDisplayName(BolsterDisplayName)
                 .SetDescription(BolsterDescription)
                 .SetBuff(bolster_buff)
@@ -294,7 +258,7 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintActivatableAbility DecreeOfMercy()
         {
-            var decree_of_mercy_effect_buff = BuffConfigurator.New(DecreeOfMercyBuffName, DecreeOfMercyBuffGuid)
+            var decree_of_mercy_effect_buff = BuffConfigurator.New(DecreeOfMercyBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(DecreeOfMercyBuffDisplayName)
                 .SetDescription(DecreeOfMercyBuffDescription)
                 .AddComponent<DecreeOfMercy>()
@@ -306,13 +270,13 @@ namespace BasicTemplate.Disciplines
                 .AddAbilityAreaEffectBuff(decree_of_mercy_effect_buff, condition: ConditionsBuilder.New().IsEnemy().Build())
                 .Configure();
 
-            var decree_of_mercy_buff = BuffConfigurator.New(DecreeOfMercyBaseBuffName, DecreeOfMercyBaseBuffGuid)
+            var decree_of_mercy_buff = BuffConfigurator.New(DecreeOfMercyBaseBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(DecreeOfMercyBaseBuffDisplayName)
                 .SetDescription(DecreeOfMercyBaseBuffDescription)
                 .AddAreaEffect(decree_of_mercy_area_effect)
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(DecreeOfMercyName, DecreeOfMercyGuid)
+            return ActivatableAbilityConfigurator.New(DecreeOfMercyName, GuidStore.ReserveDynamic())
                 .SetDisplayName(DecreeOfMercyDisplayName)
                 .SetDescription(DecreeOfMercyDescription)
                 .SetBuff(decree_of_mercy_buff)
@@ -323,7 +287,7 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintAbility Dismiss()
         {
-            return AbilityConfigurator.New(DismissName, DismissGuid)
+            return AbilityConfigurator.New(DismissName, GuidStore.ReserveDynamic())
                 .SetDisplayName(DismissDisplayName)
                 .SetDescription(DismissDescription)
                 .SetActionType(UnitCommand.CommandType.Standard)
@@ -339,7 +303,7 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintAbility LifeburstStrike()
         {
-            return AbilityConfigurator.New(LifeburstStrikeName, LifeburstStrikeGuid)
+            return AbilityConfigurator.New(LifeburstStrikeName, GuidStore.ReserveDynamic())
                 .SetDisplayName(LifeburstStrikeDisplayName)
                 .SetDescription(LifeburstStrikeDescription)
                 .SetActionType(UnitCommand.CommandType.Standard)
@@ -355,13 +319,13 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintAbility DecreeOfDeath()
         {
-            var decree_of_death_buff = BuffConfigurator.New(DecreeOfDeathBuffName, DecreeOfDeathBuffGuid)
+            var decree_of_death_buff = BuffConfigurator.New(DecreeOfDeathBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(DecreeOfDeathBuffDisplayName)
                 .SetDescription(DecreeOfDeathBuffDescription)
                 .AddComponent<DecreeOfDeath>()
                 .SetIcon(icon).Configure();
 
-            return AbilityConfigurator.New(DecreeOfDeathName, DecreeOfDeathGuid)
+            return AbilityConfigurator.New(DecreeOfDeathName, GuidStore.ReserveDynamic())
                 .SetDisplayName(DecreeOfDeathDisplayName)
                 .SetDescription(DecreeOfDeathDescription)
                 .SetActionType(UnitCommand.CommandType.Standard)
@@ -380,14 +344,14 @@ namespace BasicTemplate.Disciplines
         {
             var features = FeatureRefs.All.Select(c => c.Reference.Get()).Where(c => FeatureChecker.IsFeatureImmunityOrResistance(c));
 
-            var tyrants_end_buff = BuffConfigurator.New(TyrantsEndBuffName, TyrantsEndBuffGuid)
+            var tyrants_end_buff = BuffConfigurator.New(TyrantsEndBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(TyrantsEndBuffDisplayName)
                 .SetDescription(TyrantsEndBuffDescription)
                 .AddComponent<SuppressFeatures>(c => c.features = features.ToList())
                 .AddComponent<TyrantsEnd>()
                 .SetIcon(icon).Configure();
 
-            return AbilityConfigurator.New(TyrantsEndName, TyrantsEndGuid)
+            return AbilityConfigurator.New(TyrantsEndName, GuidStore.ReserveDynamic())
                 .SetDisplayName(TyrantsEndDisplayName)
                 .SetDescription(TyrantsEndDescription)
                 .SetActionType(UnitCommand.CommandType.Standard)
@@ -404,7 +368,7 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintAbility ShatterSpell()
         {
-            return AbilityConfigurator.New(ShatterSpellName, ShatterSpellGuid)
+            return AbilityConfigurator.New(ShatterSpellName, GuidStore.ReserveDynamic())
                 .SetDisplayName(ShatterSpellDisplayName)
                 .SetDescription(ShatterSpellDescription)
                 .SetActionType(UnitCommand.CommandType.Standard)
@@ -420,7 +384,7 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintAbility DecreeOfPurity()
         {
-            return AbilityConfigurator.New(DecreeOfPurityName, DecreeOfPurityGuid)
+            return AbilityConfigurator.New(DecreeOfPurityName, GuidStore.ReserveDynamic())
                 .SetDisplayName(DecreeOfPurityDisplayName)
                 .SetDescription(DecreeOfPurityDescription)
                 .SetActionType(UnitCommand.CommandType.Swift)
@@ -434,7 +398,7 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintAbility JudgementDay()
         {
-            return AbilityConfigurator.New(JudgementDayName, JudgementDayGuid)
+            return AbilityConfigurator.New(JudgementDayName, GuidStore.ReserveDynamic())
                 .SetDisplayName(JudgementDayDisplayName)
                 .SetDescription(JudgementDayDescription)
                 .SetIsFullRoundAction()
@@ -452,14 +416,14 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintActivatableAbility PushTheAdvantage()
         {
-            var push_the_advantage_buff = BuffConfigurator.New(PushTheAdvantageBuffName, PushTheAdvantageBuffGuid)
+            var push_the_advantage_buff = BuffConfigurator.New(PushTheAdvantageBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(PushTheAdvantageBuffDisplayName)
                 .SetDescription(PushTheAdvantageBuffDescription)
                 .AddComponent<PushTheAdvantage>()
                 .AddComponent<AddAbilityResourceDepletedTrigger>(c => { c.Resource = MainProgression.maneuver_count; c.Action = ActionsBuilder.New().RemoveSelf().Build(); c.Cost = 1; })
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(PushTheAdvantageName, PushTheAdvantageGuid)
+            return ActivatableAbilityConfigurator.New(PushTheAdvantageName, GuidStore.ReserveDynamic())
                 .SetDisplayName(PushTheAdvantageDisplayName)
                 .SetDescription(PushTheAdvantageDescription)
                 .SetBuff(push_the_advantage_buff)
@@ -470,14 +434,14 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintActivatableAbility NoblesseOblige()
         {
-            var noblesse_oblige_buff = BuffConfigurator.New(NoblesseObligeBuffName, NoblesseObligeBuffGuid)
+            var noblesse_oblige_buff = BuffConfigurator.New(NoblesseObligeBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(NoblesseObligeBuffDisplayName)
                 .SetDescription(NoblesseObligeBuffDescription)
                 .AddComponent<NoblesseOblige>()
                 .AddComponent<AddAbilityResourceDepletedTrigger>(c => { c.Resource = MainProgression.maneuver_count; c.Action = ActionsBuilder.New().RemoveSelf().Build(); c.Cost = 1; })
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(NoblesseObligeName, NoblesseObligeGuid)
+            return ActivatableAbilityConfigurator.New(NoblesseObligeName, GuidStore.ReserveDynamic())
                 .SetDisplayName(NoblesseObligeDisplayName)
                 .SetDescription(NoblesseObligeDescription)
                 .SetBuff(noblesse_oblige_buff)
@@ -489,25 +453,25 @@ namespace BasicTemplate.Disciplines
         internal static BlueprintActivatableAbility SpoilsOfWar()
         {
 
-            var spoils_of_war_area_buff = BuffConfigurator.New(SpoilsOfWarBuffEffectName, SpoilsOfWarBuffEffectGuid)
+            var spoils_of_war_area_buff = BuffConfigurator.New(SpoilsOfWarBuffEffectName, GuidStore.ReserveDynamic())
                 .SetDisplayName(SpoilsOfWarBuffEffectDisplayName)
                 .SetDescription(SpoilsOfWarBuffEffectDescription)
                 .AddComponent<SpoilsOfWar>()
                 .SetIcon(icon).Configure();
 
-            var spoils_of_war_area_effect = AbilityAreaEffectConfigurator.New(SpoilsOfWarAreaEffectName, SpoilsOfWarAreaEffectGuid)
+            var spoils_of_war_area_effect = AbilityAreaEffectConfigurator.New(SpoilsOfWarAreaEffectName, GuidStore.ReserveDynamic())
                 .SetShape(AreaEffectShape.Cylinder)
                 .SetSize(30.Feet())
                 .AddAbilityAreaEffectBuff(spoils_of_war_area_buff, condition: ConditionsBuilder.New().IsAlly().Build())
                 .Configure();
 
-            var spoils_of_war_buff = BuffConfigurator.New(SpoilsOfWarBuffName, SpoilsOfWarBuffGuid)
+            var spoils_of_war_buff = BuffConfigurator.New(SpoilsOfWarBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(SpoilsOfWarBuffDisplayName)
                 .SetDescription(SpoilsOfWarBuffDescription)
                 .AddAreaEffect(spoils_of_war_area_effect)
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(SpoilsOfWarName, SpoilsOfWarGuid)
+            return ActivatableAbilityConfigurator.New(SpoilsOfWarName, GuidStore.ReserveDynamic())
                 .SetDisplayName(SpoilsOfWarDisplayName)
                 .SetDescription(SpoilsOfWarDescription)
                 .SetBuff(spoils_of_war_buff)
@@ -519,7 +483,7 @@ namespace BasicTemplate.Disciplines
         internal static BlueprintActivatableAbility ArmamentsOfTheEmpire()
         {
 
-            var spoils_of_war_area_buff = BuffConfigurator.New(ArmamentsOfTheEmpireBuffEffectName, ArmamentsOfTheEmpireBuffEffectGuid)
+            var spoils_of_war_area_buff = BuffConfigurator.New(ArmamentsOfTheEmpireBuffEffectName, GuidStore.ReserveDynamic())
                 .SetDisplayName(ArmamentsOfTheEmpireBuffEffectDisplayName)
                 .SetDescription(ArmamentsOfTheEmpireBuffEffectDescription)
                 .AddBuffEnchantAnyWeapon(WeaponEnchantmentRefs.Holy.Reference.Get())
@@ -527,19 +491,19 @@ namespace BasicTemplate.Disciplines
                 .AddBuffEnchantArmor([ArmorEnchantmentRefs.TemporaryArmorEnhancementBonus3.Reference.Get()])
                 .SetIcon(icon).Configure();
 
-            var spoils_of_war_area_effect = AbilityAreaEffectConfigurator.New(ArmamentsOfTheEmpireAreaEffectName, ArmamentsOfTheEmpireAreaEffectGuid)
+            var spoils_of_war_area_effect = AbilityAreaEffectConfigurator.New(ArmamentsOfTheEmpireAreaEffectName, GuidStore.ReserveDynamic())
                 .SetShape(AreaEffectShape.Cylinder)
                 .SetSize(30.Feet())
                 .AddAbilityAreaEffectBuff(spoils_of_war_area_buff, condition: ConditionsBuilder.New().IsAlly().Build())
                 .Configure();
 
-            var spoils_of_war_buff = BuffConfigurator.New(ArmamentsOfTheEmpireBuffName, ArmamentsOfTheEmpireBuffGuid)
+            var spoils_of_war_buff = BuffConfigurator.New(ArmamentsOfTheEmpireBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(ArmamentsOfTheEmpireBuffDisplayName)
                 .SetDescription(ArmamentsOfTheEmpireBuffDescription)
                 .AddAreaEffect(spoils_of_war_area_effect)
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(ArmamentsOfTheEmpireName, ArmamentsOfTheEmpireGuid)
+            return ActivatableAbilityConfigurator.New(ArmamentsOfTheEmpireName, GuidStore.ReserveDynamic())
                 .SetDisplayName(ArmamentsOfTheEmpireDisplayName)
                 .SetDescription(ArmamentsOfTheEmpireDescription)
                 .SetBuff(spoils_of_war_buff)
@@ -550,19 +514,19 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintActivatableAbility TheCagedSun()
         {
-            var the_caged_sun_temp_hp_buff = BuffConfigurator.New(TheCagedSunHPBuffName, TheCagedSunHPBuffGuid)
+            var the_caged_sun_temp_hp_buff = BuffConfigurator.New(TheCagedSunHPBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(TheCagedSunHPBuffDisplayName)
                 .SetDescription(TheCagedSunHPBuffDescription)
                 .AddTemporaryHitPointsFromAbilityValue(value: ContextValues.Shared(AbilitySharedValue.Heal), removeWhenHitPointsEnd: true)
                 .SetIcon(icon).Configure();
 
-            var the_caged_sun_buff = BuffConfigurator.New(TheCagedSunBuffName, TheCagedSunBuffGuid)
+            var the_caged_sun_buff = BuffConfigurator.New(TheCagedSunBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(TheCagedSunBuffDisplayName)
                 .SetDescription(TheCagedSunBuffDescription)
                 .AddComponent<TheCagedSun>(c => { c.buff = the_caged_sun_temp_hp_buff; })
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(TheCagedSunName, TheCagedSunGuid)
+            return ActivatableAbilityConfigurator.New(TheCagedSunName, GuidStore.ReserveDynamic())
                 .SetDisplayName(TheCagedSunDisplayName)
                 .SetDescription(TheCagedSunDescription)
                 .SetBuff(the_caged_sun_buff)
@@ -573,7 +537,7 @@ namespace BasicTemplate.Disciplines
 
         internal static BlueprintActivatableAbility BattleAgainstTheSun()
         {
-            var the_caged_sun_buff = BuffConfigurator.New(BattleAgainstTheSunBuffName, BattleAgainstTheSunBuffGuid)
+            var the_caged_sun_buff = BuffConfigurator.New(BattleAgainstTheSunBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(BattleAgainstTheSunBuffDisplayName)
                 .SetDescription(BattleAgainstTheSunBuffDescription)
                 .AddComponent<BattleAgainstTheSun>()
@@ -581,7 +545,7 @@ namespace BasicTemplate.Disciplines
                 .SetFxOnRemove(BuffRefs.DayLightBuff.Reference.Get().FxOnRemove)
                 .SetIcon(icon).Configure();
 
-            return ActivatableAbilityConfigurator.New(BattleAgainstTheSunName, BattleAgainstTheSunGuid)
+            return ActivatableAbilityConfigurator.New(BattleAgainstTheSunName, GuidStore.ReserveDynamic())
                 .SetDisplayName(BattleAgainstTheSunDisplayName)
                 .SetDescription(BattleAgainstTheSunDescription)
                 .SetBuff(the_caged_sun_buff)
