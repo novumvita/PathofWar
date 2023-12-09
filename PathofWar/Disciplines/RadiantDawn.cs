@@ -199,7 +199,7 @@ namespace BasicTemplate.Disciplines
             /*MANEUVERS*/
             var dismiss = FeatureGen.FeatureFromFact(Dismiss(), discipline_feat, maneuver_selection, 1);
             var lifeburst_strike = FeatureGen.FeatureFromFact(LifeburstStrike(), discipline_feat, maneuver_selection, 1);
-            var decree_of_death = FeatureGen.FeatureFromFact(DecreeOfDeath(), discipline_feat, maneuver_selection, 7);
+            var decree_of_death = FeatureGen.FeatureFromFact(DecreeOfDeath(), discipline_feat, maneuver_selection, 1);
             var shatter_spell = FeatureGen.FeatureFromFact(ShatterSpell(), discipline_feat, maneuver_selection, 4);
             var decree_of_purity = FeatureGen.FeatureFromFact(DecreeOfPurity(), discipline_feat, maneuver_selection, 7);
             var judgement_day = FeatureGen.FeatureFromFact(JudgementDay(), discipline_feat, maneuver_selection, 16);

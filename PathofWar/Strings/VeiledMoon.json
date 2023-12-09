@@ -96,7 +96,7 @@
   },
   {
     "Key": "VeiledMoon.AnchoringSpirit.Description",
-    "enGB": "The Veiled Moon disciple pulls herself fully into the Ethereal and manifests a ghostly apparition of her form upon the Material, and in doing so he locks her immediate area for travel through the Ethereal or Astral plane. While in this stance, the initiator gains the incorporeal subtype and any enemies within 30-ft. of her position who attempt to use an effect with the (teleportation) type fail. Once outside of this stance’s range, creatures are no longer affected. "
+    "enGB": "The Veiled Moon disciple pulls herself fully into the Ethereal and manifests a ghostly apparition of her form upon the Material, and in doing so she locks her immediate area for travel through the Ethereal or Astral plane. While in this stance, the initiator gains the incorporeal subtype and any enemies within 30-ft. of her position who attempt to use an effect with the (teleportation) type fail. Once outside of this stance’s range, creatures are no longer affected. "
   },
   {
     "Key": "VeiledMoon.AnchoringSpirit.Buff.Name",
@@ -117,5 +117,14 @@
   {
     "Key": "VeiledMoon.AnchoringSpirit.BuffEffect.Description",
     "enGB": "Anchored to the Material Plane."
+  },
+  {
+    "Key": "VeiledMoon.WarpWorm.Name",
+    "ProcessTemplates": false,
+    "enGB": "Warp Worm"
+  },
+  {
+    "Key": "VeiledMoon.WarpWorm.Description",
+    "enGB": "By creating temporary breaches between the worlds of the Material and the Astral, the disciple may teleport through a few enemies and emerge from the space between worlds having done her foes great internal harm. The initiator teleports to the target, then to the next closest enemy from the first, and then the same for a third target, inflicting 10d6 points of force damage to those affected, halved by a Will save (DC 17 + initiation modifier). After the final target, the disciple teleports 10 ft. behind them to finish her turn."
   }
 ]

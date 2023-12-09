@@ -113,6 +113,7 @@ namespace PathofWar.Disciplines
             var flashing_ether_touch = FeatureGen.FeatureFromFact(FlashingEtherTouch(), discipline_feat, maneuver_selection, 1);
             var twisting_ether = FeatureGen.FeatureFromFact(TwistingEther(), discipline_feat, maneuver_selection, 7);
             var fade_through = FeatureGen.FeatureFromFact(FadeThrough(), discipline_feat, maneuver_selection, 7);
+            var warp_worm = FeatureGen.FeatureFromFact(WarpWorm(), discipline_feat, maneuver_selection, 10);
             var eclipsing_moon = FeatureGen.FeatureFromFact(EclipsingMoon(), discipline_feat, maneuver_selection, 16);
 
             /*STANCES*/
@@ -150,9 +151,9 @@ namespace PathofWar.Disciplines
         internal static BlueprintActivatableAbility AnchoringSpirit()
         {
             var anchoring_spirit_area_buff = BuffConfigurator.New(AnchoringSpiritBuffEffectName, GuidStore.ReserveDynamic())
+                .CopyFrom(BuffRefs.DimensionalAnchorBuff)
                 .SetDisplayName(AnchoringSpiritBuffEffectDisplayName)
                 .SetDescription(AnchoringSpiritBuffEffectDescription)
-                .CopyFrom(BuffRefs.DimensionalAnchorBuff, [typeof(ForbidSpecificSpellsCast)])
                 .SetIcon(icon).Configure();
 
             var anchoring_spirit_area_effect = AbilityAreaEffectConfigurator.New(AnchoringSpiritAreaEffectName, GuidStore.ReserveDynamic())
