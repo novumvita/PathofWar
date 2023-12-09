@@ -60,8 +60,6 @@ namespace PathofWar.Components.RadiantDawn
 
             Fact.RunActionInContext(ActionsBuilder.New().Add<RadiantHeal>().Build());
 
-            var combat_controller = Game.Instance.TurnBasedCombatController;
-
             new_unit = evt.Initiator;
             Logger.Log("Interrupting unit is: " + new_unit);
         }

@@ -27,8 +27,8 @@ namespace PathofWar.Components.RadiantDawn
 
             evt.Target.Damage += evt.Target.Descriptor.HPLeft - 1;
             FxHelper.SpawnFxOnUnit(AbilityRefs.Resurrection.Reference.Get().GetComponent<AbilitySpawnFx>().PrefabLink.Load(), evt.Target.View);
-
             Fact.RunActionInContext(ActionsBuilder.New().DealDamage(DamageTypes.Energy(DamageEnergyType.Holy), ContextDice.Value(DiceType.D6, 4, Context.MaybeCaster.Stats.Charisma.Bonus)).Build(), evt.Initiator);
+
             FxHelper.SpawnFxOnUnit(AbilityRefs.SearingLight.Reference.Get().GetComponent<AbilitySpawnFx>().PrefabLink.Load(), evt.Initiator.View);
             Fact.RunActionInContext(ActionsBuilder.New().HealTarget(ContextDice.Value(DiceType.D6, 4, Context.MaybeCaster.Stats.Charisma.Bonus)).Build(), evt.Target);
         }
