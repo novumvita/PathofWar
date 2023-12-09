@@ -1,24 +1,16 @@
-﻿using BlueprintCore.Actions.Builder;
-using BlueprintCore.Actions.Builder.ContextEx;
-using Kingmaker;
-using Kingmaker.ElementsSystem;
-using Kingmaker.EntitySystem.Entities;
+﻿using Kingmaker;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem.Rules;
 using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Commands;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.UnitLogic.Mechanics;
-using Kingmaker.UnitLogic.Mechanics.Actions;
-using Kingmaker.Utility;
 using PathofWar.Utilities;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PathofWar.Components.VeiledMoon
 {
-    internal class EclipsingMoon : UnitFactComponentDelegate, IUnitRunCommandHandler, IUnitCommandEndHandler
+    internal class EclipsingMoon : UnitFactComponentDelegate, IUnitRunCommandHandler, IUnitCommandEndHandler, IInitiatorRulebookHandler<RuleAttackWithWeapon>
     {
         private static readonly Logging.Logger Logger = Logging.GetLogger("EclipsingMoon");
 
@@ -65,6 +57,15 @@ namespace PathofWar.Components.VeiledMoon
                 atk.IgnoreCooldown();
                 atk.IsSingleAttack = true;
             }
+        }
+
+        public void OnEventAboutToTrigger(RuleAttackWithWeapon evt)
+        {
+            evt.ForceFlatFooted = true;
+        }
+
+        public void OnEventDidTrigger(RuleAttackWithWeapon evt)
+        {
         }
     }
 }

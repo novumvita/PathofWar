@@ -23,7 +23,7 @@ namespace PathofWar.Patches
                     if (group == MartialStance)
                     {
                         Logger.Verbose(() => "Returning group size for MartialStance");
-                        __result = 1;
+                        __result = 2;
                         return false;
                     }
                 }

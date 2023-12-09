@@ -46,6 +46,8 @@ namespace BasicTemplate.Disciplines
         private const string RadiantDawnStanceSelectionName = "RadiantDawn.StanceSelection";
         private const string RadiantDawnStanceSelectionGuid = "8DF93188-5C8A-46F1-BBEA-749BE4514465";
 
+        private const string RadiantDawnStanceDescription = "RadiantDawn.Stance.Description";
+
         private const string BolsterName = "RadiantDawn.Bolster";
         private const string BolsterGuid = "BCB5D2FA-34FA-409E-A646-5D43AD39909F";
         private const string BolsterDisplayName = "RadiantDawn.Bolster.Name";
@@ -56,10 +58,26 @@ namespace BasicTemplate.Disciplines
         private const string BolsterBuffDisplayName = "RadiantDawn.Bolster.Buff.Name";
         private const string BolsterBuffDescription = "RadiantDawn.Bolster.Buff.Description";
 
+        private const string BolsterAreaEffectName = "RadiantDawn.Bolster.AreaEffect";
+        private const string BolsterAreaEffectGuid = "74A71C7E-6902-4E83-BA9A-87B33EABBE3A";
+
+        private const string BolsterBaseBuffName = "RadiantDawn.Bolster.BaseBuff";
+        private const string BolsterBaseBuffGuid = "F084D0AF-0302-45FA-970E-54479F61FC48";
+        private const string BolsterBaseBuffDisplayName = "RadiantDawn.Bolster.BaseBuff.Name";
+        private const string BolsterBaseBuffDescription = "RadiantDawn.Bolster.BaseBuff.Description";
+
         private const string DecreeOfMercyName = "RadiantDawn.DecreeOfMercy";
         private const string DecreeOfMercyGuid = "44B2B138-2B83-4AD3-9F51-874D0BBD1D7F";
         private const string DecreeOfMercyDisplayName = "RadiantDawn.DecreeOfMercy.Name";
         private const string DecreeOfMercyDescription = "RadiantDawn.DecreeOfMercy.Description";
+
+        private const string DecreeOfMercyAreaEffectName = "RadiantDawn.DecreeOfMercy.AreaEffect";
+        private const string DecreeOfMercyAreaEffectGuid = "EB7384B4-AE1A-4A51-93AE-9BC247A47D08";
+
+        private const string DecreeOfMercyBaseBuffName = "RadiantDawn.DecreeOfMercy.BaseBuff";
+        private const string DecreeOfMercyBaseBuffGuid = "264D4B18-9C79-4A72-BB07-F1FB0F8C4091";
+        private const string DecreeOfMercyBaseBuffDisplayName = "RadiantDawn.DecreeOfMercy.BaseBuff.Name";
+        private const string DecreeOfMercyBaseBuffDescription = "RadiantDawn.DecreeOfMercy.BaseBuff.Description";
 
         private const string DecreeOfMercyBuffName = "RadiantDawn.DecreeOfMercy.Buff";
         private const string DecreeOfMercyBuffGuid = "54891945-A174-43F8-AA79-426B95A62FAF";
@@ -215,23 +233,23 @@ namespace BasicTemplate.Disciplines
                 .Configure();
 
             /*MANEUVERS*/
-            var bolster = FeatureGen.FeatureFromFact(Bolster(), discipline_feat, maneuver_selection, 1);
-            var decree_of_mercy = FeatureGen.FeatureFromFact(DecreeOfMercy(), discipline_feat, maneuver_selection, 1);
             var dismiss = FeatureGen.FeatureFromFact(Dismiss(), discipline_feat, maneuver_selection, 1);
             var lifeburst_strike = FeatureGen.FeatureFromFact(LifeburstStrike(), discipline_feat, maneuver_selection, 1);
             var decree_of_death = FeatureGen.FeatureFromFact(DecreeOfDeath(), discipline_feat, maneuver_selection, 7);
             var shatter_spell = FeatureGen.FeatureFromFact(ShatterSpell(), discipline_feat, maneuver_selection, 4);
             var decree_of_purity = FeatureGen.FeatureFromFact(DecreeOfPurity(), discipline_feat, maneuver_selection, 7);
-            var push_the_advantage = FeatureGen.FeatureFromFact(PushTheAdvantage(), discipline_feat, maneuver_selection, 13);
-            var noblesse_oblige = FeatureGen.FeatureFromFact(NoblesseOblige(), discipline_feat, maneuver_selection, 13);
             var judgement_day = FeatureGen.FeatureFromFact(JudgementDay(), discipline_feat, maneuver_selection, 16);
             var tyrants_end = FeatureGen.FeatureFromFact(TyrantsEnd(), discipline_feat, maneuver_selection, 16);
 
             /*STANCES*/
+            var bolster = FeatureGen.FeatureFromFact(Bolster(), discipline_feat, stance_selection, 1);
+            var decree_of_mercy = FeatureGen.FeatureFromFact(DecreeOfMercy(), discipline_feat, stance_selection, 1);
             var spoils_of_war = FeatureGen.FeatureFromFact(SpoilsOfWar(), discipline_feat, stance_selection, 1);
             var the_caged_sun = FeatureGen.FeatureFromFact(TheCagedSun(), discipline_feat, stance_selection, 7);
             var armaments_of_the_empire = FeatureGen.FeatureFromFact(ArmamentsOfTheEmpire(), discipline_feat, stance_selection, 7);
             var battle_against_the_sun = FeatureGen.FeatureFromFact(BattleAgainstTheSun(), discipline_feat, stance_selection, 7);
+            var push_the_advantage = FeatureGen.FeatureFromFact(PushTheAdvantage(), discipline_feat, stance_selection, 13);
+            var noblesse_oblige = FeatureGen.FeatureFromFact(NoblesseOblige(), discipline_feat, stance_selection, 13);
 
             Discipline discipline = new Discipline()
             {
@@ -243,9 +261,9 @@ namespace BasicTemplate.Disciplines
             return discipline;
         }
 
-        internal static BlueprintAbility Bolster()
+        internal static BlueprintActivatableAbility Bolster()
         {
-            var bolster_buff = BuffConfigurator.New(BolsterBuffName, BolsterBuffGuid)
+            var bolster_effect_buff = BuffConfigurator.New(BolsterBuffName, BolsterBuffGuid)
                 .SetDisplayName(BolsterBuffDisplayName)
                 .SetDescription(BolsterBuffDescription)
                 .AddDamageResistancePhysical(value: ContextValues.Rank())
@@ -253,37 +271,53 @@ namespace BasicTemplate.Disciplines
                 .AddContextRankConfig(ContextRankConfigs.StatBonus(StatType.Charisma))
                 .SetIcon(icon).Configure();
 
-            return AbilityConfigurator.New(BolsterName, BolsterGuid)
+            var bolster_area_effect = AbilityAreaEffectConfigurator.New(BolsterAreaEffectName, BolsterAreaEffectGuid)
+                .SetShape(AreaEffectShape.Cylinder)
+                .SetSize(30.Feet())
+                .AddAbilityAreaEffectBuff(bolster_effect_buff, condition: ConditionsBuilder.New().IsAlly().TargetIsYourself(negate: true).Build())
+                .Configure();
+
+            var bolster_buff = BuffConfigurator.New(BolsterBaseBuffName, BolsterBaseBuffGuid)
+                .SetDisplayName(BolsterBaseBuffDisplayName)
+                .SetDescription(BolsterBaseBuffDescription)
+                .AddAreaEffect(bolster_area_effect)
+                .SetIcon(icon).Configure();
+
+            return ActivatableAbilityConfigurator.New(BolsterName, BolsterGuid)
                 .SetDisplayName(BolsterDisplayName)
                 .SetDescription(BolsterDescription)
-                .SetActionType(UnitCommand.CommandType.Free)
-                .AllowTargeting(friends: true)
-                .SetRange(AbilityRange.Close)
-                .SetAnimation(CastAnimationStyle.Immediate)
-                .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
-                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuffPermanent(bolster_buff).Build())
-                .SetType(AbilityType.Extraordinary)
+                .SetBuff(bolster_buff)
+                .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
+                .SetDeactivateImmediately()
                 .SetIcon(icon).Configure();
         }
 
-        internal static BlueprintAbility DecreeOfMercy()
+        internal static BlueprintActivatableAbility DecreeOfMercy()
         {
-            var decree_of_mercy_buff = BuffConfigurator.New(DecreeOfMercyBuffName, DecreeOfMercyBuffGuid)
+            var decree_of_mercy_effect_buff = BuffConfigurator.New(DecreeOfMercyBuffName, DecreeOfMercyBuffGuid)
                 .SetDisplayName(DecreeOfMercyBuffDisplayName)
                 .SetDescription(DecreeOfMercyBuffDescription)
                 .AddComponent<DecreeOfMercy>()
                 .SetIcon(icon).Configure();
 
-            return AbilityConfigurator.New(DecreeOfMercyName, DecreeOfMercyGuid)
+            var decree_of_mercy_area_effect = AbilityAreaEffectConfigurator.New(DecreeOfMercyAreaEffectName, DecreeOfMercyAreaEffectGuid)
+                .SetShape(AreaEffectShape.Cylinder)
+                .SetSize(30.Feet())
+                .AddAbilityAreaEffectBuff(decree_of_mercy_effect_buff, condition: ConditionsBuilder.New().IsEnemy().Build())
+                .Configure();
+
+            var decree_of_mercy_buff = BuffConfigurator.New(DecreeOfMercyBaseBuffName, DecreeOfMercyBaseBuffGuid)
+                .SetDisplayName(DecreeOfMercyBaseBuffDisplayName)
+                .SetDescription(DecreeOfMercyBaseBuffDescription)
+                .AddAreaEffect(decree_of_mercy_area_effect)
+                .SetIcon(icon).Configure();
+
+            return ActivatableAbilityConfigurator.New(DecreeOfMercyName, DecreeOfMercyGuid)
                 .SetDisplayName(DecreeOfMercyDisplayName)
                 .SetDescription(DecreeOfMercyDescription)
-                .SetActionType(UnitCommand.CommandType.Free)
-                .AllowTargeting(enemies: true)
-                .SetRange(AbilityRange.Close)
-                .SetAnimation(CastAnimationStyle.Immediate)
-                .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
-                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuffPermanent(decree_of_mercy_buff).Build())
-                .SetType(AbilityType.Extraordinary)
+                .SetBuff(decree_of_mercy_buff)
+                .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
+                .SetDeactivateImmediately()
                 .SetIcon(icon).Configure();
         }
 
@@ -429,6 +463,7 @@ namespace BasicTemplate.Disciplines
                 .SetDisplayName(PushTheAdvantageDisplayName)
                 .SetDescription(PushTheAdvantageDescription)
                 .SetBuff(push_the_advantage_buff)
+                .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
                 .SetDeactivateImmediately()
                 .SetIcon(icon).Configure();
         }
@@ -446,6 +481,7 @@ namespace BasicTemplate.Disciplines
                 .SetDisplayName(NoblesseObligeDisplayName)
                 .SetDescription(NoblesseObligeDescription)
                 .SetBuff(noblesse_oblige_buff)
+                .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
                 .SetDeactivateImmediately()
                 .SetIcon(icon).Configure();
         }
@@ -541,7 +577,8 @@ namespace BasicTemplate.Disciplines
                 .SetDisplayName(BattleAgainstTheSunBuffDisplayName)
                 .SetDescription(BattleAgainstTheSunBuffDescription)
                 .AddComponent<BattleAgainstTheSun>()
-                .AddFacts([BuffRefs.DayLightBuff.Reference.Get()])
+                .SetFxOnStart(BuffRefs.DayLightBuff.Reference.Get().FxOnStart)
+                .SetFxOnRemove(BuffRefs.DayLightBuff.Reference.Get().FxOnRemove)
                 .SetIcon(icon).Configure();
 
             return ActivatableAbilityConfigurator.New(BattleAgainstTheSunName, BattleAgainstTheSunGuid)

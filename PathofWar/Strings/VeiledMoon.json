@@ -24,7 +24,7 @@
   },
   {
     "Key": "VeiledMoon.StanceOfTheEtherGate.Buff.Description",
-    "enGB": "A stance of the Veiled Moon discipline."
+    "enGB": "Space exists to be folded."
   },
   {
     "Key": "VeiledMoon.LunarPenumbra.Name",
@@ -51,7 +51,7 @@
   },
   {
     "Key": "VeiledMoon.EclipsingMoon.Description",
-    "enGB": "Folding space around her form effortlessly, the disciple is capable of leaps through the ether and attacking through the barrier between the worlds in a series of staccato bursts of silvery-blue light, her image blinking as she strikes. As a full action, the initiator may make an attack against a target and then teleport a distance up to her movement speed to a new target to strike again, and each attack is made against the target’s flat-footed armor class. She may do this a number of times equal to the number of attacks she possesses on a full attack action (including off hand attacks or secondary attacks), and may select the same target for each attack. Each attack gains a +2 competence bonus. If an enemy dies to one of these attacks, she gains an additional attack."
+    "enGB": "Folding space around her form effortlessly, the disciple is capable of leaps through the ether and attacking through the barrier between the worlds in a series of staccato bursts of silvery-blue light, her image blinking as she strikes. As a full action, the initiator may make an attack against a target and then teleport a distance up to her movement speed to a new target to strike again, and each attack is made against the target’s flat-footed armor class. She may do this a number of times equal to the number of attacks she possesses on a full attack action (including off hand attacks or secondary attacks), and may select the same target for each attack. If an enemy dies to one of these attacks, she gains an additional attack."
   },
   {
     "Key": "VeiledMoon.EclipsingMoon.Buff.Name",
@@ -61,5 +61,61 @@
   {
     "Key": "VeiledMoon.EclipsingMoon.Buff.Description",
     "enGB": "Dancing between worlds."
+  },
+  {
+    "Key": "VeiledMoon.FlashingEtherTouch.Name",
+    "ProcessTemplates": false,
+    "enGB": "Flashing Ether Touch"
+  },
+  {
+    "Key": "VeiledMoon.FlashingEtherTouch.Description",
+    "enGB": "With but a touch the Veiled Moon disciple may send a foe hurtling through the Astral to reappear with frightening velocity to hit the ground. The initiator makes a melee touch against a target, teleporting them away. The target makes a Reflex save (DC 17 + initiation modifier). Upon a failed saving throw, the target suffers 10d6 points of damage from reaching high speeds and slamming hard into the ground and is considered prone."
+  },
+  {
+    "Key": "VeiledMoon.FadeThrough.Name",
+    "ProcessTemplates": false,
+    "enGB": "Fade Through"
+  },
+  {
+    "Key": "VeiledMoon.FadeThrough.Description",
+    "enGB": "An advanced technique, the Veiled Moon disciple at this point learns how to fold two points in space around him to appear at another location within the span of a heart beat. The initiator may teleport to a location up to twice his movement speed away as a swift action."
+  },
+  {
+    "Key": "VeiledMoon.TwistingEther.Name",
+    "ProcessTemplates": false,
+    "enGB": "Twisting Ether"
+  },
+  {
+    "Key": "VeiledMoon.TwistingEther.Description",
+    "enGB": "With a nod to his ally, the Veiled Moon adept may sink through the world with his ally and switch places with him for better effect in combat. As a swift action, the initiator may designate a willing ally within 30-ft. and swap places with him via teleportation."
+  },
+  {
+    "Key": "VeiledMoon.AnchoringSpirit.Name",
+    "ProcessTemplates": false,
+    "enGB": "Anchoring Spirit"
+  },
+  {
+    "Key": "VeiledMoon.AnchoringSpirit.Description",
+    "enGB": "The Veiled Moon disciple pulls himself fully into the Ethereal and manifests a ghostly apparition of his form upon the Material, and in doing so he locks his immediate area for travel through the Ethereal or Astral plane. While in this stance, the initiator gains the incorporeal subtype and any enemies within 30-ft. of his position who attempt to use an effect with the (teleportation) type fail. Once outside of this stance’s range, creatures are no longer affected. "
+  },
+  {
+    "Key": "VeiledMoon.AnchoringSpirit.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Anchoring Spirit"
+  },
+
+  {
+    "Key": "VeiledMoon.AnchoringSpirit.Buff.Description",
+    "enGB": "Master of the Ethereal Realm."
+  },
+  {
+    "Key": "VeiledMoon.AnchoringSpirit.BuffEffect.Name",
+    "ProcessTemplates": false,
+    "enGB": "Anchoring Spirit - Effect"
+  },
+
+  {
+    "Key": "VeiledMoon.AnchoringSpirit.BuffEffect.Description",
+    "enGB": "Anchored to the Material Plane."
   }
 ]

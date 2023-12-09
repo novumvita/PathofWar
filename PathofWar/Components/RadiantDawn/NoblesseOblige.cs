@@ -30,7 +30,7 @@ namespace PathofWar.Components.RadiantDawn
             Fact.RunActionInContext(ActionsBuilder.New().DealDamage(DamageTypes.Energy(DamageEnergyType.Holy), ContextDice.Value(DiceType.D6, 4, Context.MaybeCaster.Stats.Charisma.Bonus)).Build(), evt.Initiator);
 
             FxHelper.SpawnFxOnUnit(AbilityRefs.SearingLight.Reference.Get().GetComponent<AbilitySpawnFx>().PrefabLink.Load(), evt.Initiator.View);
-            Fact.RunActionInContext(ActionsBuilder.New().HealTarget(ContextDice.Value(DiceType.D6, 4, Context.MaybeCaster.Stats.Charisma.Bonus)).Build(), evt.Target);
+            Fact.RunActionInContext(ActionsBuilder.New().HealTarget(ContextDice.Value(DiceType.D6, 4, Context.MaybeCaster.Stats.Charisma.Bonus)).ApplyBuffPermanent(BuffRefs.Fatigued.Reference.Get()).Build(), evt.Target);
         }
     }
 }

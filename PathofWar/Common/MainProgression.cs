@@ -44,7 +44,7 @@ namespace PathofWar.Common
         internal static void Configure()
         {
             maneuver_count = AbilityResourceConfigurator.New(ResourceName, ResourceGuid)
-                .SetMaxAmount(ResourceAmountBuilder.New(0).IncreaseByLevelStartPlusDivStep(otherClassLevelsMultiplier: 1, startingLevel: 1, startingBonus: 3, levelsPerStep: 3, bonusPerStep: 1, minBonus: 0))
+                .SetMaxAmount(ResourceAmountBuilder.New(0).IncreaseByLevelStartPlusDivStep(otherClassLevelsMultiplier: 1, startingLevel: 1, startingBonus: 2, levelsPerStep: 3, bonusPerStep: 1, minBonus: 0))
                 .Configure();
 
             List<Discipline> disciplines = new()
@@ -83,8 +83,8 @@ namespace PathofWar.Common
             var discipline_selection = discipline_selection_0.Configure();
 
             var lb = LevelEntryBuilder.New()
-                .AddEntry(1, maneuver_selection, maneuver_selection, maneuver_selection, stance_selection)
-                .AddEntry(4, maneuver_selection)
+                .AddEntry(1, maneuver_selection, maneuver_selection, stance_selection)
+                .AddEntry(4, maneuver_selection, stance_selection)
                 .AddEntry(7, maneuver_selection, stance_selection)
                 .AddEntry(10, maneuver_selection)
                 .AddEntry(13, maneuver_selection, stance_selection)

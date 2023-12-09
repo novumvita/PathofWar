@@ -1,18 +1,10 @@
 ﻿using HarmonyLib;
-using JetBrains.Annotations;
 using Kingmaker.EntitySystem.Entities;
-using Kingmaker.UnitLogic;
 using Kingmaker.UnitLogic.Commands.Base;
-using Kingmaker.View;
 using PathofWar.Components.VeiledMoon;
 using PathofWar.Utilities;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using static Pathfinding.Util.RetainedGizmos;
 
 namespace PathofWar.Patches
 {

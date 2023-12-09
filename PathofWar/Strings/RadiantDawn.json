@@ -15,7 +15,7 @@
   },
   {
     "Key": "RadiantDawn.Bolster.Description",
-    "enGB": "You fortify an ally with akasha, hardening their skin like the scales of a dragon. The next time they are hit by an enemy attack,they gain DR/– equal to your initiation modifier for 1 round."
+    "enGB": "You fortify your allies with akasha, hardening their skin like the scales of a dragon. Once per round, when hit by an enemy attack, they gain DR/– equal to your initiation modifier."
   },
   {
     "Key": "RadiantDawn.Bolster.Buff.Name",
@@ -28,6 +28,16 @@
     "enGB": "Has DR/- against one attack."
   },
   {
+    "Key": "RadiantDawn.Bolster.BaseBuff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Bolster"
+  },
+
+  {
+    "Key": "RadiantDawn.Bolster.BaseBuff.Description",
+    "enGB": "Bolstering allies."
+  },
+  {
     "Key": "RadiantDawn.DecreeOfMercy.Name",
     "ProcessTemplates": false,
     "enGB": "Decree of Mercy"
@@ -35,7 +45,17 @@
 
   {
     "Key": "RadiantDawn.DecreeOfMercy.Description",
-    "enGB": "A simple look and gesture can weaken one’s resolve to kill. The next time the target uses an effect which deals hit point damage, they can not kill the affected unit."
+    "enGB": "A simple look and gesture can weaken one’s resolve to kill. Once per round, when an enemu uses an effect which deals hit point damage, they can not kill the affected unit."
+  },
+  {
+    "Key": "RadiantDawn.DecreeOfMercy.BaseBuff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Decree of Mercy"
+  },
+
+  {
+    "Key": "RadiantDawn.DecreeOfMercy.BaseBuff.Description",
+    "enGB": "Spreading Mercy."
   },
   {
     "Key": "RadiantDawn.DecreeOfMercy.Buff.Name",
@@ -193,7 +213,7 @@
 
   {
     "Key": "RadiantDawn.SpoilsOfWar.Buff.Description",
-    "enGB": "A stance of the Radiant Dawn discipline."
+    "enGB": "Might makes right."
   },
   {
     "Key": "RadiantDawn.SpoilsOfWar.BuffEffect.Name",
@@ -203,7 +223,7 @@
 
   {
     "Key": "RadiantDawn.SpoilsOfWar.BuffEffect.Description",
-    "enGB": "Might makes right."
+    "enGB": "Claiming the spoils of war."
   },
   {
     "Key": "RadiantDawn.TheCagedSun.Name",
@@ -222,7 +242,7 @@
 
   {
     "Key": "RadiantDawn.TheCagedSun.Buff.Description",
-    "enGB": "A stance of the Radiant Dawn discipline."
+    "enGB": "Burns the brightest."
   },
   {
     "Key": "RadiantDawn.TheCagedSun.HPBuff.Name",
@@ -251,7 +271,7 @@
 
   {
     "Key": "RadiantDawn.ArmamentsOfTheEmpire.Buff.Description",
-    "enGB": "A stance of the Radiant Dawn discipline."
+    "enGB": "Arming her allies."
   },
   {
     "Key": "RadiantDawn.ArmamentsOfTheEmpire.BuffEffect.Name",
@@ -280,6 +300,6 @@
 
   {
     "Key": "RadiantDawn.BattleAgainstTheSun.Buff.Description",
-    "enGB": "A stance of the Radiant Dawn discipline."
+    "enGB": "To fight back is futile."
   }
 ]
