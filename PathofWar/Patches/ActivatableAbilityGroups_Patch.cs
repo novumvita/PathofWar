@@ -16,13 +16,13 @@ namespace PathofWar.Patches
         static class UnitPartActivatableAbility_Patch
         {
             [HarmonyPatch(nameof(UnitPartActivatableAbility.GetGroupSize)), HarmonyPrefix]
-            static bool GetGroupSize(ActivatableAbilityGroup group, ref int __result)
+            static bool GetGroupSize(UnitPartActivatableAbility __instance, ActivatableAbilityGroup group, ref int __result)
             {
                 try
                 {
                     if (group == MartialStance)
                     {
-                        Logger.Verbose(() => "Returning group size for MartialStance");
+                        Logger.Log("Returning group size for MartialStance");
                         __result = 2;
                         return false;
                     }

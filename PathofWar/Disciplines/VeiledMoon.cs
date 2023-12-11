@@ -9,13 +9,16 @@ using BlueprintCore.Blueprints.References;
 using BlueprintCore.Conditions.Builder;
 using BlueprintCore.Conditions.Builder.ContextEx;
 using BlueprintCore.Utils.Types;
+using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
+using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.ActivatableAbilities;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.Utility;
 using Kingmaker.Visual.Animation.Kingmaker;
 using PathofWar.Common;
 using PathofWar.Components;
+using PathofWar.Components.Common;
 using PathofWar.Components.VeiledMoon;
 using PathofWar.Patches;
 using static Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell;
@@ -48,6 +51,14 @@ namespace PathofWar.Disciplines
         private const string FormlessDanceBuffName = "VeiledMoon.FormlessDance.Buff";
         private const string FormlessDanceBuffDisplayName = "VeiledMoon.FormlessDance.Buff.Name";
         private const string FormlessDanceBuffDescription = "VeiledMoon.FormlessDance.Buff.Description";
+
+        private const string SpiritualWeaponStanceName = "VeiledMoon.SpiritualWeaponStance";
+        private const string SpiritualWeaponStanceDisplayName = "VeiledMoon.SpiritualWeaponStance.Name";
+        private const string SpiritualWeaponStanceDescription = "VeiledMoon.SpiritualWeaponStance.Description";
+
+        private const string SpiritualWeaponStanceBuffName = "VeiledMoon.SpiritualWeaponStance.Buff";
+        private const string SpiritualWeaponStanceBuffDisplayName = "VeiledMoon.SpiritualWeaponStance.Buff.Name";
+        private const string SpiritualWeaponStanceBuffDescription = "VeiledMoon.SpiritualWeaponStance.Buff.Description";
 
         private const string LunarPenumbraName = "VeiledMoon.LunarPenumbra";
         private const string LunarPenumbraDisplayName = "VeiledMoon.LunarPenumbra.Name";
@@ -130,17 +141,18 @@ namespace PathofWar.Disciplines
                 .Configure();
 
             /*MANEUVERS*/
-            var flashing_ether_touch = FeatureGen.FeatureFromFact(FlashingEtherTouch(), discipline_feat, maneuver_selection, 1);
             var ghostwalk = FeatureGen.FeatureFromFact(Ghostwalk(), discipline_feat, maneuver_selection, 1);
             var dimensional_strike = FeatureGen.FeatureFromFact(DimensionalStrike(), discipline_feat, maneuver_selection, 1);
             var twisting_ether = FeatureGen.FeatureFromFact(TwistingEther(), discipline_feat, maneuver_selection, 7);
             var fade_through = FeatureGen.FeatureFromFact(FadeThrough(), discipline_feat, maneuver_selection, 7);
+            var flashing_ether_touch = FeatureGen.FeatureFromFact(FlashingEtherTouch(), discipline_feat, maneuver_selection, 10);
             var warp_worm = FeatureGen.FeatureFromFact(WarpWorm(), discipline_feat, maneuver_selection, 10);
             var eclipsing_moon = FeatureGen.FeatureFromFact(EclipsingMoon(), discipline_feat, maneuver_selection, 16);
 
             /*STANCES*/
             var formless_dance = FeatureGen.FeatureFromFact(FormlessDance(), discipline_feat, stance_selection, 4);
             var stance_of_the_ether_gate = FeatureGen.FeatureFromFact(StanceOfTheEtherGate(), discipline_feat, stance_selection, 7);
+            var spiritual_weapon_stance = FeatureGen.FeatureFromFact(SpiritualWeaponStance(), discipline_feat, stance_selection, 7);
             var anchoring_spirit = FeatureGen.FeatureFromFact(AnchoringSpirit(), discipline_feat, stance_selection, 13);
             var lunar_penumbra = FeatureGen.FeatureFromFact(LunarPenumbra(), discipline_feat, stance_selection, 16);
 
@@ -186,6 +198,26 @@ namespace PathofWar.Disciplines
                 .SetDisplayName(FormlessDanceDisplayName)
                 .SetDescription(FormlessDanceDescription)
                 .SetBuff(formless_dance_buff)
+                .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
+                .SetDeactivateImmediately()
+                .SetIcon(icon).Configure();
+        }
+
+        internal static BlueprintActivatableAbility SpiritualWeaponStance()
+        {
+            var spiritual_weapon_stance_buff = BuffConfigurator.New(SpiritualWeaponStanceBuffName, GuidStore.ReserveDynamic())
+                .SetDisplayName(SpiritualWeaponStanceBuffDisplayName)
+                .SetDescription(SpiritualWeaponStanceBuffDescription)
+                .AddBuffEnchantAnyWeapon(WeaponEnchantmentRefs.GhostTouch.Reference.Get())
+                .AddSpellResistance(true, value: ContextValues.Rank())
+                .AddContextRankConfig(ContextRankConfigs.CharacterLevel().WithBonusValueProgression(5))
+                .AddComponent<WeaponBonusDamageDice>(c => c.dmg_desc = DamageTypes.Force().GetDamageDescriptor(new DiceFormula(2, DiceType.D6)))
+                .SetIcon(icon).Configure();
+
+            return ActivatableAbilityConfigurator.New(SpiritualWeaponStanceName, GuidStore.ReserveDynamic())
+                .SetDisplayName(SpiritualWeaponStanceDisplayName)
+                .SetDescription(SpiritualWeaponStanceDescription)
+                .SetBuff(spiritual_weapon_stance_buff)
                 .SetGroup(ExpandedActivatableAbilityGroup.MartialStance)
                 .SetDeactivateImmediately()
                 .SetIcon(icon).Configure();

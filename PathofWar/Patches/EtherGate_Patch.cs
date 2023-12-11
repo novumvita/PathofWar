@@ -86,6 +86,29 @@ namespace PathofWar.Patches
 
                 return false;
             }
+
+            [HarmonyPatch(nameof(UnitMovementAgent.ForcePath)), HarmonyPrefix]
+            static bool ForcePath(UnitMovementAgent __instance, Path p, bool disableApproachRadius)
+            {
+                UnitEntityView view = __instance.Unit;
+                UnitEntityData initiator = view.Data;
+
+                if (!initiator.Facts.List.Where(c => c.GetComponent<EtherGate>()).Any())
+                    return true;
+
+                var controller = Game.Instance.TurnBasedCombatController.CurrentTurn;
+
+                var final_position = p.vectorPath.Last();
+                var initial_position = initiator.Position;
+                var distance = Vector3.Distance(initial_position, final_position);
+                var range = controller.GetRemainingMovementRange(initiator, true, false);
+
+                Logger.Log("Ether gate by: " + initiator);
+
+                EtherGateTeleport.TeleportWithFx(initiator, final_position);
+
+                return false;
+            }
         }
 
         [HarmonyPatch(typeof(TurnController))]
@@ -109,7 +132,7 @@ namespace PathofWar.Patches
                 if (component.distance < __instance.GetRemainingFiveFootStepRange(unit))
                 {
                     Logger.Log("Treated as five foot step.");
-                    __instance.SetMetersMovedByFiveFootStep(unit, component.distance);
+                    __instance.SetMetersMovedByFiveFootStep(unit, __instance.GetRemainingFiveFootStepRange(unit));
                     component.distance = 0f;
                     return;
                 }

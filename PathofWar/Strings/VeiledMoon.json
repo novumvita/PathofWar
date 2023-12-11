@@ -161,7 +161,7 @@
   },
   {
     "Key": "VeiledMoon.FormlessDance.Description",
-    "enGB": "The Veiled Moon disciple immerses herself in a sort of dimensional flux, causing her to be able to see what cannot be perceived and seemingly be in many places at once. While in this stance, the initiator gains the benefits of a see invisibility spell and the blur spell"
+    "enGB": "The Veiled Moon disciple immerses herself in a sort of dimensional flux, causing her to be able to see what cannot be perceived and seemingly be in many places at once. While in this stance, the initiator gains the benefits of the see invisibility spell and the blur spell."
   },
   {
     "Key": "VeiledMoon.FormlessDance.Buff.Name",
@@ -171,5 +171,23 @@
   {
     "Key": "VeiledMoon.FormlessDance.Buff.Description",
     "enGB": "In dimensional flux."
+  },
+  {
+    "Key": "VeiledMoon.SpiritualWeaponStance.Name",
+    "ProcessTemplates": false,
+    "enGB": "Spiritual Weapon Stance"
+  },
+  {
+    "Key": "VeiledMoon.SpiritualWeaponStance.Description",
+    "enGB": "By channeling ethereal energies along her weapons and her body, the initiator becomes immersed in both worlds, being as solid on the Ethereal Plane as she is on the Material. While in this stance, the initiator’s weapons are treated as if they had the ghost touch property and her attacks inflict an additional 2d6 points or force damage. This empowerment from the Ethereal plane also acts a buffer against magical attacks, granting the disciple spell resistance equal to 5 + her level."
+  },
+  {
+    "Key": "VeiledMoon.SpiritualWeaponStance.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Spiritual Weapon Stance"
+  },
+  {
+    "Key": "VeiledMoon.SpiritualWeaponStance.Buff.Description",
+    "enGB": "Wreathed in Ethereal energies."
   }
 ]
