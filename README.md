@@ -4,7 +4,8 @@ An attempt at adding the [Path of War](https://www.d20pfsrd.com/alternative-rule
 Only tested for turn-based.\
 Liberties have been taken for technical reasons and for ease of implementation, so refer to the in-game descriptions of abilities for accurate information.\
 All characters will be able to choose a discipline at level 1 and maneuvers and stances as they level up.\
-Counters have been changed into stances, with once per turn limit when necessary for balance.
+Counters have been changed into stances, with once per turn limit when necessary for balance.\
+2 stances may be active at a time.
 
 ## [Disciplines](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/disciplines-and-maneuvers/):
   * [Radiant Dawn](https://www.d20pfsrd.com/alternative-rule-systems/path-of-war/disciplines-and-maneuvers/alternative-rule-systems-path-of-war-disciplines-and-maneuvers-radiant-dawn-maneuvers) : 7 maneuvers and 8 stances.
