@@ -11,17 +11,17 @@ using BlueprintCore.Conditions.Builder.ContextEx;
 using BlueprintCore.Utils.Types;
 using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
-using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.ActivatableAbilities;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Commands.Base;
 using Kingmaker.Utility;
-using Kingmaker.Visual.Animation.Kingmaker;
 using PathofWar.Common;
 using PathofWar.Components;
 using PathofWar.Components.Common;
 using PathofWar.Components.VeiledMoon;
 using PathofWar.Patches;
 using static Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell;
+using static PathofWar.Components.Common.AbilityTargetChecks;
 
 namespace PathofWar.Disciplines
 {
@@ -117,9 +117,27 @@ namespace PathofWar.Disciplines
         private const string DimensionalStrikeName = "VeiledMoon.DimensionalStrike";
         private const string DimensionalStrikeDisplayName = "VeiledMoon.DimensionalStrike.Name";
         private const string DimensionalStrikeDescription = "VeiledMoon.DimensionalStrike.Description";
+
+        private const string DispersalStrikeName = "VeiledMoon.DispersalStrike";
+        private const string DispersalStrikeDisplayName = "VeiledMoon.DispersalStrike.Name";
+        private const string DispersalStrikeDescription = "VeiledMoon.DispersalStrike.Description";
+
+        private const string VaporformCrashName = "VeiledMoon.VaporformCrash";
+        private const string VaporformCrashDisplayName = "VeiledMoon.VaporformCrash.Name";
+        private const string VaporformCrashDescription = "VeiledMoon.VaporformCrash.Description";
+
+        private const string VaporformCrashBuffName = "VeiledMoon.VaporformCrash.Buff";
+        private const string VaporformCrashBuffDisplayName = "VeiledMoon.VaporformCrash.Buff.Name";
+        private const string VaporformCrashBuffDescription = "VeiledMoon.VaporformCrash.Buff.Description";
+
+        private const string EtherealReminiscenceName = "VeiledMoon.EtherealReminiscence";
+        private const string EtherealReminiscenceDisplayName = "VeiledMoon.EtherealReminiscence.Name";
+        private const string EtherealReminiscenceDescription = "VeiledMoon.EtherealReminiscence.Description";
         #endregion
 
         static readonly UnityEngine.Sprite icon = AbilityRefs.ProtectionFromAlignmentCommunal.Reference.Get().Icon;
+
+        internal static BlueprintBuff incorporeal_buff;
 
         internal static Discipline Configure()
         {
@@ -143,10 +161,13 @@ namespace PathofWar.Disciplines
             /*MANEUVERS*/
             var ghostwalk = FeatureGen.FeatureFromFact(Ghostwalk(), discipline_feat, maneuver_selection, 1);
             var dimensional_strike = FeatureGen.FeatureFromFact(DimensionalStrike(), discipline_feat, maneuver_selection, 1);
+            var ethereal_reminiscence = FeatureGen.FeatureFromFact(EtherealReminiscence(), discipline_feat, maneuver_selection, 1);
             var twisting_ether = FeatureGen.FeatureFromFact(TwistingEther(), discipline_feat, maneuver_selection, 7);
             var fade_through = FeatureGen.FeatureFromFact(FadeThrough(), discipline_feat, maneuver_selection, 7);
             var flashing_ether_touch = FeatureGen.FeatureFromFact(FlashingEtherTouch(), discipline_feat, maneuver_selection, 10);
             var warp_worm = FeatureGen.FeatureFromFact(WarpWorm(), discipline_feat, maneuver_selection, 10);
+            var dispersal_strike = FeatureGen.FeatureFromFact(DispersalStrike(), discipline_feat, maneuver_selection, 10);
+            var vaporform_crash = FeatureGen.FeatureFromFact(VaporformCrash(), discipline_feat, maneuver_selection, 13);
             var eclipsing_moon = FeatureGen.FeatureFromFact(EclipsingMoon(), discipline_feat, maneuver_selection, 16);
 
             /*STANCES*/
@@ -300,7 +321,7 @@ namespace PathofWar.Disciplines
 
         internal static BlueprintAbility Ghostwalk()
         {
-            var ghostwalk_buff = BuffConfigurator.New(GhostwalkBuffName, GuidStore.ReserveDynamic())
+            incorporeal_buff = BuffConfigurator.New(GhostwalkBuffName, GuidStore.ReserveDynamic())
                 .SetDisplayName(GhostwalkBuffDisplayName)
                 .SetDescription(GhostwalkBuffDescription)
                 .AddFacts([FeatureRefs.Incorporeal.Reference.Get()])
@@ -316,7 +337,7 @@ namespace PathofWar.Disciplines
                 .SetRange(AbilityRange.Personal)
                 .SetActionType(UnitCommand.CommandType.Swift)
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
-                .AddAbilityExecuteActionOnCast(ActionsBuilder.New().ApplyBuff(ghostwalk_buff, ContextDuration.Fixed(1)).Build())
+                .AddAbilityExecuteActionOnCast(ActionsBuilder.New().ApplyBuff(incorporeal_buff, ContextDuration.Fixed(1)).Build())
                 .SetIcon(icon).Configure();
         }
 
@@ -329,8 +350,66 @@ namespace PathofWar.Disciplines
                 .SetRange(AbilityRange.Weapon)
                 .AllowTargeting(enemies: true)
                 .SetActionType(UnitCommand.CommandType.Standard)
+                .AddComponent<AttackAnimation>()
                 .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
-                .AddAbilityExecuteActionOnCast(ActionsBuilder.New().ApplyBuffPermanent(BuffRefs.DimensionStrikeBuff.Reference.Get()).MeleeAttack(UnitAnimationType.MainHandAttack).RemoveBuff(BuffRefs.DimensionStrikeBuff.Reference.Get()).Build())
+                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>(c => c.force_flat_footed = true)
+                .SetIcon(icon).Configure();
+        }
+
+        internal static BlueprintAbility DispersalStrike()
+        {
+            return AbilityConfigurator.New(DispersalStrikeName, GuidStore.ReserveDynamic())
+                .SetDisplayName(DispersalStrikeDisplayName)
+                .SetDescription(DispersalStrikeDescription)
+                .SetType(AbilityType.Extraordinary)
+                .SetRange(AbilityRange.Weapon)
+                .AllowTargeting(enemies: true)
+                .SetActionType(UnitCommand.CommandType.Standard)
+                .AddComponent<AttackAnimation>()
+                .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
+                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>(c => c.bonus_dmg_desc = [DamageTypes.Force().GetDamageDescriptor(new DiceFormula(6, DiceType.D6))])
+                .AddComponent<AbilityTargetIncorporeal>(c => c.negate = true)
+                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(incorporeal_buff, ContextDuration.FixedDice(DiceType.D4)).Build())
+                .SetIcon(icon).Configure();
+        }
+
+        internal static BlueprintAbility VaporformCrash()
+        {
+            var vaporform_buff = BuffConfigurator.New(VaporformCrashBuffName, GuidStore.ReserveDynamic())
+                .SetDisplayName(VaporformCrashBuffDisplayName)
+                .SetDescription(VaporformCrashBuffDescription)
+                .AddComponent<SuppressFeatures>(c => c.features = [FeatureRefs.Incorporeal.Reference.Get()])
+                .SetIcon(icon).Configure();
+
+            return AbilityConfigurator.New(VaporformCrashName, GuidStore.ReserveDynamic())
+                .SetDisplayName(VaporformCrashDisplayName)
+                .SetDescription(VaporformCrashDescription)
+                .SetType(AbilityType.Extraordinary)
+                .SetRange(AbilityRange.Weapon)
+                .AllowTargeting(enemies: true)
+                .SetActionType(UnitCommand.CommandType.Standard)
+                .AddComponent<AttackAnimation>()
+                .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
+                .AddComponent<AbilityDeliverAttackWithWeaponOnHit>(c => c.bonus_dmg_desc = [DamageTypes.Force().GetDamageDescriptor(new DiceFormula(18, DiceType.D6))])
+                .AddComponent<AbilityTargetIncorporeal>()
+                .AddAbilityEffectRunAction(ActionsBuilder.New().ApplyBuff(incorporeal_buff, toCaster: true, durationValue: ContextDuration.FixedDice(DiceType.D4)).ApplyBuff(vaporform_buff, durationValue: ContextDuration.FixedDice(DiceType.D4) ).Build())
+                .SetIcon(icon).Configure();
+        }
+
+        internal static BlueprintAbility EtherealReminiscence()
+        {
+            return AbilityConfigurator.New(EtherealReminiscenceName, GuidStore.ReserveDynamic())
+                .SetDisplayName(EtherealReminiscenceDisplayName)
+                .SetDescription(EtherealReminiscenceDescription)
+                .SetType(AbilityType.Extraordinary)
+                .SetRange(AbilityRange.Personal)
+                .AllowTargeting(self: true)
+                .SetActionType(UnitCommand.CommandType.Standard)
+                .SetAnimation(CastAnimationStyle.Immediate)
+                .AddAbilityResourceLogic(requiredResource: MainProgression.maneuver_count, isSpendResource: true, amount: 1)
+                .AddComponent<AbilityTargetIncorporeal>()
+                .AddAbilityEffectRunAction(ActionsBuilder.New().OnContextCaster(ActionsBuilder.New().HealTarget(ContextDice.Value(DiceType.Zero, 0, ContextValues.Rank())).Build()).Build())
+                .AddContextRankConfig(ContextRankConfigs.StatBonus(Kingmaker.EntitySystem.Stats.StatType.SkillStealth).WithBonusValueProgression(0, true))
                 .SetIcon(icon).Configure();
         }
 

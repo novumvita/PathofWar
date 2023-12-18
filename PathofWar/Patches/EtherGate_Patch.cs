@@ -15,7 +15,7 @@ using UnityEngine;
 
 namespace PathofWar.Patches
 {
-    internal class EtherGatePatch
+    internal class EtherGate_Patch
     {
         private static readonly Logging.Logger Logger = Logging.GetLogger("EtherGate");
 

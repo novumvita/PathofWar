@@ -8,6 +8,7 @@ using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
 using PathofWar.Components;
 using PathofWar.Disciplines;
+using PathofWar.Patches;
 using System.Collections.Generic;
 
 namespace PathofWar.Common
@@ -64,6 +65,7 @@ namespace PathofWar.Common
                 .SetDisplayName(MainSelectionDisplayName)
                 .SetDescription(MainSelectionDescription)
                 .AddAbilityResources(resource: maneuver_count, restoreAmount: true)
+                .AddIncreaseActivatableAbilityGroupSize(ExpandedActivatableAbilityGroup.MartialStance)
                 .AddComponent<RestoreResourceOnCombatEnd>(c => c.Resource = maneuver_count);
 
             foreach (var discipline in disciplines)

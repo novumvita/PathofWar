@@ -15,7 +15,7 @@
   },
   {
     "Key": "VeiledMoon.StanceOfTheEtherGate.Description",
-    "enGB": "By shifting her essence partially into the Astral plane, the disciple finds that moving through that plane as just as easy as moving through the Material plane. While the disciple is in this stance, she may teleport instead of moving, at will. Her normal movement speed still applies. She must see her destination clearly to be able to teleport to it. The initiator may not take any creatures with her when teleporting; only himself and the gear she is carrying."
+    "enGB": "By shifting her essence partially into the Astral plane, the disciple finds that moving through that plane as just as easy as moving through the Material plane. While the disciple is in this stance, she may teleport instead of moving, at will. Her normal movement speed still applies. She must see her destination clearly to be able to teleport to it. The initiator may not take any creatures with her when teleporting; only herself and the gear she is carrying."
   },
   {
     "Key": "VeiledMoon.StanceOfTheEtherGate.Buff.Name",
@@ -139,7 +139,7 @@
   {
     "Key": "VeiledMoon.Ghostwalk.Buff.Name",
     "ProcessTemplates": false,
-    "enGB": "Ghostwalk"
+    "enGB": "Incorporeal"
   },
   {
     "Key": "VeiledMoon.Ghostwalk.Buff.Description",
@@ -189,5 +189,41 @@
   {
     "Key": "VeiledMoon.SpiritualWeaponStance.Buff.Description",
     "enGB": "Wreathed in Ethereal energies."
+  },
+  {
+    "Key": "VeiledMoon.DispersalStrike.Name",
+    "ProcessTemplates": false,
+    "enGB": "Dispersal Strike"
+  },
+  {
+    "Key": "VeiledMoon.DispersalStrike.Description",
+    "enGB": "With a powerful strike and flash of silver-blue light, the disciple slams her foe directly into the Ethereal for a few moments, causing it to become ghostly and unreal. The initiator makes an attack on a target creature and if successful, the strike inflicts 6d6 additional force damage, and the target gains the incorporeal subtype for 1d4 rounds. This strike does not function on targets who already possess the incorporeal subtype."
+  },
+  {
+    "Key": "VeiledMoon.VaporformCrash.Name",
+    "ProcessTemplates": false,
+    "enGB": "Vaporform Crash"
+  },
+  {
+    "Key": "VeiledMoon.VaporformCrash.Description",
+    "enGB": "The Veiled Moon teaches that its disciples must know how to balance the scales between both worlds, so to make a foe real in the Material world, then the disciple must briefly sojourn to the other side. The disciple makes a melee attack against an incorporeal target, and if successful the target loses their incorporeal subtype for 1d4 rounds and takes 18d6 points of force damage. The disciple gains the incorporeal subtype for 1d4 rounds."
+  },
+  {
+    "Key": "VeiledMoon.VaporformCrash.Buff.Name",
+    "ProcessTemplates": false,
+    "enGB": "Vaporform Crashed"
+  },
+  {
+    "Key": "VeiledMoon.VaporformCrash.Buff.Description",
+    "enGB": "Incorporeality suppressed."
+  },
+  {
+    "Key": "VeiledMoon.EtherealReminiscence.Name",
+    "ProcessTemplates": false,
+    "enGB": "Ethereal Reminiscence"
+  },
+  {
+    "Key": "VeiledMoon.EtherealReminiscence.Description",
+    "enGB": "The ectoplasmic nature of beings on the Ethereal plane allows for the Veiled Moon disciple to use her will to restore her form by filling her wounds with spectral energies. As a standard action while incorporeal, the initiator may restore twice her ranks in Stealth in hit points to herself."
   }
 ]
